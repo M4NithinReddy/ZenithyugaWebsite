@@ -1,0 +1,6 @@
+{
+  "name": "ZenithYuga",
+  "description": "A premium luxury digital design portfolio and interactive platform for ZenithYuga.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
