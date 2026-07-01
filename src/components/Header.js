@@ -101,7 +101,7 @@ export function Header(currentTab) {
           <button
             data-action="navigate"
             data-tab="contact"
-            class="w-full flex items-center justify-center gap-2 bg-[#6d28d9] py-3 rounded-full text-sm font-sans font-medium uppercase tracking-wider text-[#ecddf9] transition-all hover:bg-[#5b00c5] cursor-pointer"
+            class="w-full flex items-center justify-center gap-2 bg-[#120a1d] border border-[#d3bbff]/20 py-3 rounded-full text-sm font-sans font-medium uppercase tracking-wider text-[#ecddf9] transition-all hover:bg-[#180f23] cursor-pointer"
           >
             Let's Talk Today
             <i data-lucide="arrow-right" class="w-4 h-4"></i>
