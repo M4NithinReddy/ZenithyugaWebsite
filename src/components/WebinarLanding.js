@@ -12,205 +12,185 @@ export function WebinarLanding() {
   ];
 
   const faqsHtml = faqs.map((f, i) => `
-    <div class="faq-item border-b border-[#d3bbff]/10">
-      <button class="faq-btn w-full py-5 flex items-center justify-between text-left focus:outline-none group" aria-expanded="false" data-index="${i}">
-        <span class="text-[#ecddf9] font-medium text-sm md:text-base group-hover:text-white transition-colors">${f.q}</span>
-        <span class="faq-icon transition-transform duration-300 transform flex items-center justify-center text-[#d3bbff] group-hover:text-white bg-[#d3bbff]/5 p-1.5 rounded-full"><i data-lucide="plus" class="w-4 h-4"></i></span>
+    <div class="faq-item rounded-2xl bg-white/[0.02] border border-white/5 mb-3 overflow-hidden transition-colors hover:border-white/10 hover:bg-white/[0.04]">
+      <button class="faq-btn w-full py-5 px-6 flex items-center justify-between text-left focus:outline-none group" aria-expanded="false" data-index="${i}">
+        <span class="text-white/90 font-medium text-base group-hover:text-white transition-colors">${f.q}</span>
+        <span class="faq-icon transition-transform duration-300 transform flex items-center justify-center text-white/50 group-hover:text-white/90 bg-white/5 p-2 rounded-full"><i data-lucide="plus" class="w-4 h-4"></i></span>
       </button>
-      <div class="faq-content overflow-hidden max-h-0 transition-all duration-300 ease-in-out opacity-0">
-        <p class="text-[#ccc3d7] text-sm pb-5 leading-relaxed">${f.a}</p>
+      <div class="faq-content overflow-hidden max-h-0 transition-all duration-300 ease-in-out opacity-0 px-6">
+        <p class="text-white/60 text-sm pb-6 leading-relaxed font-light">${f.a}</p>
       </div>
     </div>
   `).join('');
 
   return `
     <!-- Scrollable Webinar Container -->
-    <div id="webinar-landing" class="fixed inset-0 z-[80] w-full h-[100dvh] font-sans bg-[#0a0514] overflow-y-auto overflow-x-hidden opacity-0 pointer-events-none transition-all duration-500 ease-out translate-y-4 block">
+    <div id="webinar-landing" class="fixed inset-0 z-[80] w-full h-[100dvh] font-sans bg-[#030014] overflow-y-auto overflow-x-hidden opacity-0 pointer-events-none transition-all duration-500 ease-out translate-y-4 block">
 
-      <!-- Premium Background: Aurora, Grid, Particles -->
-      <div class="absolute inset-0 pointer-events-none overflow-hidden">
-        <!-- CSS Grid Overlay -->
-        <div class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
-        <!-- Blurred Glowing Blobs -->
-        <div class="absolute top-0 left-0 w-[500px] h-[500px] bg-[#6d28d9]/20 blur-[150px] rounded-full mix-blend-screen transform -translate-x-1/2 -translate-y-1/2"></div>
-        <div class="absolute top-[20%] right-0 w-[600px] h-[600px] bg-[#2563eb]/20 blur-[150px] rounded-full mix-blend-screen transform translate-x-1/3"></div>
-        <!-- Particles Container -->
-        <div id="webinar-particles" class="absolute inset-0 opacity-40"></div>
+      <!-- Premium Background -->
+      <div class="absolute inset-0 pointer-events-none overflow-hidden bg-[#030014]">
+        <div class="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f1a_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f1a_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-60"></div>
+        <div class="absolute top-[-10%] left-[-10%] w-[40vw] h-[40vw] bg-purple-600/20 blur-[120px] rounded-full mix-blend-screen animate-pulse" style="animation-duration: 10s;"></div>
+        <div class="absolute top-[20%] right-[-10%] w-[35vw] h-[35vw] bg-blue-600/20 blur-[120px] rounded-full mix-blend-screen animate-pulse" style="animation-duration: 10s; animation-delay: 1s;"></div>
+        <div class="absolute bottom-[-10%] left-[20%] w-[40vw] h-[40vw] bg-fuchsia-600/10 blur-[120px] rounded-full mix-blend-screen"></div>
+        <div id="webinar-particles" class="absolute inset-0 opacity-50 mix-blend-screen"></div>
       </div>
 
       <!-- Main Content Wrapper -->
       <div class="w-full relative block">
         
-        <!-- ============================================== -->
-        <!-- PREMIUM HERO SECTION (Two-Column Layout)       -->
-        <!-- ============================================== -->
+        <!-- HERO SECTION -->
         <div class="max-w-[1400px] mx-auto px-6 pt-24 md:pt-32 pb-20 min-h-[90vh] flex flex-col lg:flex-row items-center gap-16 relative z-10">
           
-          <!-- LEFT COLUMN: Content -->
+          <!-- LEFT COLUMN -->
           <div class="w-full lg:w-1/2 flex flex-col items-start text-left gap-8">
             
-            <!-- Animated Badge -->
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#180f23]/80 backdrop-blur-md border border-[#d3bbff]/20 text-xs tracking-widest uppercase font-mono text-[#dac5ff] shadow-[0_0_20px_rgba(211,187,255,0.1)] fade-in-section group hover:border-[#d3bbff]/40 transition-colors cursor-default">
-              <span class="relative flex h-2 w-2 mr-1">
+            <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/5 backdrop-blur-xl border border-white/10 text-xs tracking-[0.2em] uppercase font-semibold shadow-[0_4px_24px_-8px_rgba(255,255,255,0.2)] fade-in-section hover:bg-white/10 transition-all duration-300 cursor-default">
+              <span class="relative flex h-2 w-2">
                 <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span>
                 <span class="relative inline-flex rounded-full h-2 w-2 bg-red-500 shadow-[0_0_8px_#ef4444]"></span>
               </span>
-              LIVE MASTERCLASS
+              <span class="bg-gradient-to-r from-red-200 to-red-100 bg-clip-text text-transparent font-bold">LIVE MASTERCLASS</span>
             </div>
             
-            <!-- Huge Premium Heading -->
-            <h1 class="text-6xl md:text-[80px] lg:text-[90px] font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white via-[#c4abff] to-[#60a5fa] leading-[1.05] tracking-tight fade-in-section animate-text-shimmer bg-[length:200%_auto] drop-shadow-[0_0_40px_rgba(109,40,217,0.4)] pb-2" style="transition-delay: 100ms">
-              NextGen AI Tools Webinar 2026
+            <h1 class="text-5xl md:text-[72px] lg:text-[84px] font-black text-transparent bg-clip-text bg-gradient-to-br from-white via-white to-purple-400 leading-[1.1] tracking-tight fade-in-section drop-shadow-sm pb-2" style="transition-delay: 100ms">
+              NextGen AI Tools<br/><span class="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Webinar 2026</span>
             </h1>
             
-            <p class="text-xl md:text-2xl text-[#ecddf9] font-medium fade-in-section tracking-wide" style="transition-delay: 200ms">
+            <p class="text-xl md:text-2xl text-white/80 font-medium fade-in-section tracking-wide" style="transition-delay: 200ms">
               Master the Modern AI Development Workflow
             </p>
 
-            <p class="text-lg text-[#ccc3d7] leading-relaxed max-w-xl fade-in-section font-light" style="transition-delay: 300ms">
+            <p class="text-lg text-white/60 leading-relaxed max-w-xl fade-in-section font-light" style="transition-delay: 300ms">
               Build, deploy, and scale real AI applications using <span class="text-white font-medium">Stitch, Antigravity, React, and Vercel</span> in one live hands-on masterclass.
             </p>
             
-            <!-- Premium Information Chips -->
             <div class="flex flex-wrap items-center gap-3 fade-in-section w-full max-w-2xl" style="transition-delay: 400ms">
               ${[
-                { icon: 'calendar', text: '11 July, 5 PM IST' },
-                { icon: 'award', text: 'Certificate' },
-                { icon: 'monitor-play', text: 'Live Masterclass' },
-                { icon: 'flame', text: 'Limited Seats' },
-                { icon: 'baby', text: 'Beginner Friendly' }
-              ].map(item => `
-                <div class="group flex items-center gap-2.5 bg-[#120a1d]/60 backdrop-blur-xl px-4 py-2.5 rounded-full border border-[#d3bbff]/15 hover:border-[#60a5fa]/50 hover:bg-[#60a5fa]/10 transition-all duration-300 shadow-sm cursor-default">
-                  <i data-lucide="${item.icon}" class="w-4 h-4 text-[#c4abff] group-hover:text-[#60a5fa] transition-colors"></i>
-                  <span class="text-[#ecddf9] text-sm font-medium tracking-wide group-hover:text-white transition-colors">${item.text}</span>
+      { icon: 'calendar', text: '11 July, 5 PM IST' },
+      { icon: 'award', text: 'Certificate' },
+      { icon: 'monitor-play', text: 'Live Masterclass' },
+      { icon: 'flame', text: 'Limited Seats' },
+      { icon: 'baby', text: 'Beginner Friendly' }
+    ].map(item => `
+                <div class="group flex items-center gap-2 bg-white/5 backdrop-blur-md px-3.5 py-2 rounded-xl border border-white/5 hover:border-white/20 hover:bg-white/10 transition-all duration-300 shadow-xl cursor-default hover:-translate-y-0.5">
+                  <i data-lucide="${item.icon}" class="w-4 h-4 text-purple-300 group-hover:text-purple-200 transition-colors"></i>
+                  <span class="text-white/80 text-sm font-medium group-hover:text-white transition-colors">${item.text}</span>
                 </div>
               `).join('')}
             </div>
             
-            <!-- CTA Buttons -->
-            <div class="flex flex-col sm:flex-row items-center gap-4 mt-2 fade-in-section w-full sm:w-auto" style="transition-delay: 500ms">
-              <a href="https://docs.google.com/forms/d/e/1FAIpQLSfycyrCNocF5NCv8bKO_fVBRm41fxWGkyIGtE0KD4GateyZAw/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer" id="hero-register-btn" class="relative overflow-hidden inline-flex items-center justify-center gap-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white px-10 py-5 rounded-full font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-[0_10px_40px_rgba(37,99,235,0.4)] border border-blue-400/30 group w-full sm:w-auto">
-                <span class="absolute inset-0 w-full h-full bg-gradient-to-b from-white/20 to-transparent pointer-events-none rounded-full"></span>
-                <span class="absolute top-0 -inset-full h-full w-1/2 z-0 block transform -skew-x-12 bg-gradient-to-r from-transparent to-white opacity-20 group-hover:animate-[shimmer_1.5s_infinite]"></span>
-                <span class="relative z-10 drop-shadow-md">🚀 Register Now for ₹ 69 Only</span>
+            <div class="flex flex-col sm:flex-row items-center gap-4 mt-4 fade-in-section w-full sm:w-auto" style="transition-delay: 500ms">
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSfycyrCNocF5NCv8bKO_fVBRm41fxWGkyIGtE0KD4GateyZAw/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer" id="hero-register-btn" class="relative overflow-hidden flex items-center justify-center gap-2 bg-gradient-to-r from-purple-600 to-blue-600 text-white px-8 py-4 rounded-xl font-bold text-[17px] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_40px_-10px_rgba(147,51,234,0.5)] group w-full sm:w-auto border border-purple-400/30">
+                <span class="absolute top-0 -inset-full h-full w-1/2 z-0 block transform -skew-x-12 bg-gradient-to-r from-transparent to-white/20 opacity-30 group-hover:animate-[shimmer_1.5s_infinite]"></span>
+                <span class="relative z-10 flex items-center gap-2 drop-shadow-md">Register Now <span class="bg-white/20 px-2 py-0.5 rounded-md text-sm ml-1 border border-white/10">₹69</span></span>
+                <i data-lucide="arrow-right" class="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform drop-shadow-md"></i>
               </a>
-              <button id="view-agenda-btn" class="inline-flex items-center justify-center gap-3 bg-white/5 backdrop-blur-md text-[#ecddf9] px-10 py-5 rounded-full font-bold text-lg border border-[#d3bbff]/20 hover:border-[#d3bbff]/60 hover:bg-white/10 transition-all duration-300 w-full sm:w-auto">
+              <button id="view-agenda-btn" class="flex items-center justify-center gap-2 bg-purple-900/20 backdrop-blur-md text-white px-8 py-4 rounded-xl font-medium text-[17px] border border-purple-500/30 hover:border-purple-400/60 hover:bg-purple-800/40 transition-all duration-300 w-full sm:w-auto group shadow-[0_0_20px_-5px_rgba(147,51,234,0.2)]">
                 View Agenda
               </button>
             </div>
 
-            <!-- Presenter & Countdown & Stats -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-6 fade-in-section w-full" style="transition-delay: 600ms">
-              
-              <!-- Countdown Container -->
-              <div class="bg-[#180f23]/60 backdrop-blur-xl border border-[#d3bbff]/15 p-4 rounded-2xl flex flex-col justify-center">
-                <div class="text-[10px] text-[#958da1] font-mono tracking-widest uppercase mb-2">Starts In</div>
-                <div class="flex items-center gap-3 text-center" id="hero-countdown">
-                  <div class="flex flex-col">
-                    <span class="text-2xl font-bold text-white bg-[#120a1d] px-3 py-1.5 rounded-lg border border-[#d3bbff]/10 cd-days">00</span>
-                    <span class="text-[9px] text-[#958da1] uppercase mt-1">Days</span>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8 fade-in-section w-full" style="transition-delay: 600ms">
+              <div class="bg-white/5 backdrop-blur-xl border border-white/10 p-5 rounded-2xl flex flex-col justify-center shadow-2xl relative overflow-hidden group hover:border-white/20 transition-all">
+                <div class="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-blue-500/5"></div>
+                <div class="text-[11px] text-white/50 font-semibold tracking-[0.15em] uppercase mb-3 relative z-10">Starts In</div>
+                <div class="flex items-center justify-between gap-2" id="hero-countdown">
+                  <div class="flex flex-col items-center flex-1">
+                    <span class="text-2xl font-bold text-white cd-days font-mono tracking-tight">00</span>
+                    <span class="text-[10px] text-white/40 uppercase mt-0.5 font-medium">Days</span>
                   </div>
-                  <span class="text-[#c4abff] font-bold text-xl pb-3">:</span>
-                  <div class="flex flex-col">
-                    <span class="text-2xl font-bold text-white bg-[#120a1d] px-3 py-1.5 rounded-lg border border-[#d3bbff]/10 cd-hours">00</span>
-                    <span class="text-[9px] text-[#958da1] uppercase mt-1">Hrs</span>
+                  <span class="text-white/20 font-light text-2xl pb-4">:</span>
+                  <div class="flex flex-col items-center flex-1">
+                    <span class="text-2xl font-bold text-white cd-hours font-mono tracking-tight">00</span>
+                    <span class="text-[10px] text-white/40 uppercase mt-0.5 font-medium">Hrs</span>
                   </div>
-                  <span class="text-[#c4abff] font-bold text-xl pb-3">:</span>
-                  <div class="flex flex-col">
-                    <span class="text-2xl font-bold text-white bg-[#120a1d] px-3 py-1.5 rounded-lg border border-[#d3bbff]/10 cd-mins">00</span>
-                    <span class="text-[9px] text-[#958da1] uppercase mt-1">Min</span>
+                  <span class="text-white/20 font-light text-2xl pb-4">:</span>
+                  <div class="flex flex-col items-center flex-1">
+                    <span class="text-2xl font-bold text-white cd-mins font-mono tracking-tight">00</span>
+                    <span class="text-[10px] text-white/40 uppercase mt-0.5 font-medium">Min</span>
                   </div>
-                  <span class="text-[#c4abff] font-bold text-xl pb-3">:</span>
-                  <div class="flex flex-col">
-                    <span class="text-2xl font-bold text-[#60a5fa] bg-[#120a1d] px-3 py-1.5 rounded-lg border border-[#60a5fa]/30 cd-secs">00</span>
-                    <span class="text-[9px] text-[#958da1] uppercase mt-1">Sec</span>
+                  <span class="text-white/20 font-light text-2xl pb-4">:</span>
+                  <div class="flex flex-col items-center flex-1">
+                    <span class="text-2xl font-bold text-blue-400 cd-secs font-mono tracking-tight drop-shadow-[0_0_8px_rgba(96,165,250,0.5)]">00</span>
+                    <span class="text-[10px] text-blue-400/70 uppercase mt-0.5 font-medium">Sec</span>
                   </div>
                 </div>
               </div>
 
-              <!-- Presenter Card -->
-              <div class="bg-gradient-to-br from-[#180f23]/80 to-[#120a1d]/90 backdrop-blur-xl border border-[#d3bbff]/15 p-4 rounded-2xl flex items-center gap-4 hover:border-[#d3bbff]/30 transition-colors">
-                <div class="w-14 h-14 rounded-full bg-gradient-to-tr from-[#6d28d9] to-[#d3bbff] p-[2px] shrink-0 shadow-[0_0_15px_rgba(109,40,217,0.3)]">
-                  <div class="w-full h-full bg-[#120a1d] rounded-full overflow-hidden flex items-center justify-center">
-                    <i data-lucide="user" class="w-6 h-6 text-[#d3bbff]"></i>
+              <div class="bg-white/5 backdrop-blur-xl border border-white/10 p-5 rounded-2xl flex items-center gap-4 hover:border-white/20 transition-all shadow-2xl relative overflow-hidden group">
+                <div class="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-transparent"></div>
+                <div class="w-14 h-14 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 p-[2px] shrink-0 shadow-[0_0_20px_rgba(168,85,247,0.3)] relative z-10 group-hover:scale-105 transition-transform">
+                  <div class="w-full h-full bg-[#0a0514] rounded-full overflow-hidden flex items-center justify-center">
+                    <i data-lucide="user" class="w-6 h-6 text-purple-300"></i>
                   </div>
                 </div>
-                <div class="flex flex-col">
-                  <span class="text-xs text-[#958da1] tracking-widest uppercase font-mono">Hosted By</span>
+                <div class="flex flex-col relative z-10">
+                  <span class="text-[10px] text-white/50 tracking-[0.15em] uppercase font-semibold mb-0.5">Hosted By</span>
                   <span class="text-white font-bold text-lg">Nithin</span>
-                  <span class="text-[#c4abff] text-xs">Founder & Director</span>
+                  <span class="text-purple-300/80 text-xs font-medium">Founder & Director</span>
                 </div>
               </div>
-              
             </div>
 
-            <!-- Participant Stats -->
-            <div class="flex flex-wrap items-center gap-x-8 gap-y-4 mt-4 fade-in-section text-sm font-medium" style="transition-delay: 700ms">
+            <div class="flex flex-wrap items-center gap-6 mt-6 fade-in-section text-sm font-medium" style="transition-delay: 700ms">
               <div class="flex items-center gap-2">
-                <div class="flex text-yellow-400">
+                <div class="flex text-amber-400 gap-0.5">
                   <i data-lucide="star" class="w-4 h-4 fill-current"></i>
                   <i data-lucide="star" class="w-4 h-4 fill-current"></i>
                   <i data-lucide="star" class="w-4 h-4 fill-current"></i>
                   <i data-lucide="star" class="w-4 h-4 fill-current"></i>
                   <i data-lucide="star" class="w-4 h-4 fill-current"></i>
                 </div>
-                <span class="text-white">4.9/5 Rating</span>
+                <span class="text-white/90">4.9/5 Rating</span>
               </div>
-              <div class="text-[#ccc3d7] flex items-center gap-2">
-                <div class="w-1.5 h-1.5 rounded-full bg-[#60a5fa]"></div>
+              <div class="text-white/60 flex items-center gap-2">
+                <div class="w-1.5 h-1.5 rounded-full bg-blue-500 shadow-[0_0_8px_#3b82f6]"></div>
                 500+ Expected
               </div>
-              <div class="text-[#ccc3d7] flex items-center gap-2">
-                <div class="w-1.5 h-1.5 rounded-full bg-[#c084fc]"></div>
+              <div class="text-white/60 flex items-center gap-2">
+                <div class="w-1.5 h-1.5 rounded-full bg-purple-500 shadow-[0_0_8px_#a855f7]"></div>
                 30+ Practical Demos
               </div>
             </div>
 
           </div>
 
-          <!-- RIGHT COLUMN: 3D Visual Area -->
+          <!-- RIGHT COLUMN 3D -->
           <div class="w-full lg:w-1/2 h-[500px] lg:h-[700px] relative hidden md:block fade-in-section" style="transition-delay: 400ms">
-            <!-- 3D Base Platform -->
-            <div class="absolute inset-0 flex items-center justify-center">
-              <div class="w-[80%] h-[60%] bg-gradient-to-br from-[#ffffff05] to-[#ffffff01] border border-[#ffffff10] rounded-3xl backdrop-blur-3xl transform rotate-x-[20deg] rotate-y-[-15deg] rotate-z-[5deg] shadow-[0_50px_100px_rgba(0,0,0,0.8),inset_0_0_50px_rgba(255,255,255,0.05)] relative animate-float">
+            <div class="absolute inset-0 flex items-center justify-center perspective-[1000px]">
+              <div class="w-[85%] h-[65%] bg-gradient-to-br from-white/[0.08] to-white/[0.01] border border-white/10 rounded-[40px] backdrop-blur-2xl transform rotate-x-[15deg] rotate-y-[-10deg] rotate-z-[2deg] shadow-[0_30px_100px_-20px_rgba(0,0,0,1),inset_0_0_30px_rgba(255,255,255,0.05)] relative animate-float transition-transform duration-700 hover:rotate-x-[10deg] hover:rotate-y-[-5deg]">
                 
-                <!-- Glowing Core -->
-                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-[#6d28d9]/40 rounded-full blur-[60px] animate-pulse"></div>
+                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-purple-600/30 rounded-full blur-[80px] animate-pulse"></div>
                 
-                <!-- SVG Connections -->
-                <svg class="absolute inset-0 w-full h-full pointer-events-none opacity-30" style="filter: drop-shadow(0 0 5px rgba(255,255,255,0.5))">
+                <svg class="absolute inset-0 w-full h-full pointer-events-none opacity-40" style="filter: drop-shadow(0 0 5px rgba(255,255,255,0.5))">
                   <path d="M 20% 20% Q 50% 10% 80% 30% T 50% 80% T 20% 60% Z" fill="none" stroke="url(#lineGrad)" stroke-width="1.5" stroke-dasharray="10 10" class="animate-[spin_40s_linear_infinite]" />
                   <defs>
                     <linearGradient id="lineGrad" x1="0" y1="0" x2="1" y2="1">
-                      <stop offset="0%" stop-color="#60a5fa" />
-                      <stop offset="50%" stop-color="#c084fc" />
-                      <stop offset="100%" stop-color="#60a5fa" />
+                      <stop offset="0%" stop-color="#3b82f6" />
+                      <stop offset="50%" stop-color="#a855f7" />
+                      <stop offset="100%" stop-color="#3b82f6" />
                     </linearGradient>
                   </defs>
                 </svg>
 
-                <!-- Floating Tech Stack Icons -->
-                <!-- React -->
-                <div class="absolute top-[15%] left-[20%] w-16 h-16 bg-[#180f23]/80 backdrop-blur-md border border-[#61dafb]/30 rounded-2xl flex items-center justify-center shadow-[0_0_30px_rgba(97,218,251,0.2)] animate-[float_4s_ease-in-out_infinite]">
+                <div class="absolute top-[15%] left-[20%] w-16 h-16 bg-white/[0.05] backdrop-blur-xl border border-white/20 rounded-2xl flex items-center justify-center shadow-[0_0_30px_rgba(255,255,255,0.05)] animate-[float_4s_ease-in-out_infinite]">
                   <i data-lucide="code-2" class="w-8 h-8 text-[#61dafb]"></i>
                 </div>
-                <!-- Vercel -->
-                <div class="absolute top-[25%] right-[20%] w-16 h-16 bg-[#180f23]/80 backdrop-blur-md border border-white/30 rounded-2xl flex items-center justify-center shadow-[0_0_30px_rgba(255,255,255,0.1)] animate-[float_5s_ease-in-out_infinite_0.5s]">
+                <div class="absolute top-[25%] right-[20%] w-16 h-16 bg-white/[0.05] backdrop-blur-xl border border-white/20 rounded-2xl flex items-center justify-center shadow-[0_0_30px_rgba(255,255,255,0.05)] animate-[float_5s_ease-in-out_infinite_0.5s]">
                   <i data-lucide="triangle" class="w-8 h-8 text-white fill-white"></i>
                 </div>
-                <!-- GitHub -->
-                <div class="absolute bottom-[30%] left-[10%] w-16 h-16 bg-[#180f23]/80 backdrop-blur-md border border-white/20 rounded-2xl flex items-center justify-center shadow-[0_0_30px_rgba(255,255,255,0.1)] animate-[float_6s_ease-in-out_infinite_1s]">
+                <div class="absolute bottom-[30%] left-[10%] w-16 h-16 bg-white/[0.05] backdrop-blur-xl border border-white/20 rounded-2xl flex items-center justify-center shadow-[0_0_30px_rgba(255,255,255,0.05)] animate-[float_6s_ease-in-out_infinite_1s]">
                   <i data-lucide="github" class="w-8 h-8 text-white"></i>
                 </div>
-                <!-- Render -->
-                <div class="absolute bottom-[20%] right-[15%] w-16 h-16 bg-[#180f23]/80 backdrop-blur-md border border-[#46E3B7]/30 rounded-2xl flex items-center justify-center shadow-[0_0_30px_rgba(70,227,183,0.2)] animate-[float_4.5s_ease-in-out_infinite_1.5s]">
+                <div class="absolute bottom-[20%] right-[15%] w-16 h-16 bg-white/[0.05] backdrop-blur-xl border border-white/20 rounded-2xl flex items-center justify-center shadow-[0_0_30px_rgba(255,255,255,0.05)] animate-[float_4.5s_ease-in-out_infinite_1.5s]">
                   <i data-lucide="server" class="w-8 h-8 text-[#46E3B7]"></i>
                 </div>
                 
-                <!-- Central Focus (Stitch/Antigravity) -->
-                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-28 h-28 bg-gradient-to-br from-[#120a1d]/90 to-[#201533]/90 backdrop-blur-xl border border-[#d3bbff]/40 rounded-3xl flex flex-col items-center justify-center shadow-[0_0_50px_rgba(109,40,217,0.5)] z-20 hover:scale-110 transition-transform">
-                  <i data-lucide="sparkles" class="w-10 h-10 text-[#c084fc] mb-1"></i>
-                  <span class="text-white text-xs font-bold tracking-widest">AI WORKFLOW</span>
+                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-black/40 backdrop-blur-xl border border-white/20 rounded-3xl flex flex-col items-center justify-center shadow-[0_0_50px_rgba(168,85,247,0.4)] z-20 hover:scale-110 transition-all duration-500 group">
+                  <div class="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-blue-500/20 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <i data-lucide="sparkles" class="w-10 h-10 text-purple-300 mb-2 relative z-10 group-hover:animate-pulse"></i>
+                  <span class="text-white text-[10px] font-bold tracking-[0.2em] relative z-10">AI WORKFLOW</span>
                 </div>
                 
               </div>
@@ -220,68 +200,72 @@ export function WebinarLanding() {
 
         <div class="max-w-[1400px] mx-auto px-6 relative z-10">
 
-        <!-- ============================================== -->
-        <!-- REST OF THE WEBINAR CONTENT                    -->
-        <!-- ============================================== -->
-
-        <!-- Topics Covered -->
+        <!-- AGENDA -->
         <div id="agenda-section" class="mb-32 fade-in-section scroll-mt-24 pt-16">
-          <h3 class="text-3xl md:text-5xl font-bold text-center text-[#ecddf9] mb-16 tracking-tight">Tools & Technologies Covered</h3>
+          <div class="flex flex-col items-center text-center mb-16">
+            <h2 class="text-sm font-bold tracking-[0.2em] text-purple-400 uppercase mb-4">Curriculum</h2>
+            <h3 class="text-4xl md:text-5xl font-black text-white tracking-tight">Tools & Technologies</h3>
+          </div>
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             ${[
-              { title: 'Stitch', desc: 'Learn how Stitch simplifies AI-powered development workflows natively.', icon: 'puzzle' },
-              { title: 'Antigravity', desc: 'Build and accelerate applications using modern AI agent techniques.', icon: 'rocket' },
-              { title: 'GitHub', desc: 'Manage projects professionally using version control and collaboration.', icon: 'github' },
-              { title: 'React', desc: 'Develop modern, responsive user interfaces with component-driven design.', icon: 'code-2' },
-              { title: 'Vercel', desc: 'Deploy frontend applications quickly with production-ready hosting.', icon: 'triangle' },
-              { title: 'Render', desc: 'Host APIs, databases, and backend services with absolute ease.', icon: 'server' }
-            ].map(topic => `
-              <div class="glass-card p-10 rounded-3xl flex flex-col gap-4 group border border-[#d3bbff]/10 hover:border-[#60a5fa]/30 transition-all duration-300 hover:shadow-[0_10px_40px_rgba(96,165,250,0.1)] hover:-translate-y-2 bg-[#120a1d]/60 backdrop-blur-xl">
-                <div class="w-14 h-14 bg-[#180f23] rounded-2xl flex items-center justify-center text-[#d3bbff] border border-[#d3bbff]/20 group-hover:scale-110 group-hover:bg-[#60a5fa]/10 group-hover:text-[#60a5fa] transition-all shadow-lg">
-                  <i data-lucide="${topic.icon}" class="w-7 h-7"></i>
+      { title: 'Stitch', desc: 'Simplify AI-powered development workflows natively.', icon: 'puzzle', color: 'from-blue-500/20 to-purple-500/20', borderColor: 'group-hover:border-blue-400/50', iconColor: 'text-blue-400' },
+      { title: 'Antigravity', desc: 'Build applications using modern AI agent techniques.', icon: 'rocket', color: 'from-purple-500/20 to-pink-500/20', borderColor: 'group-hover:border-purple-400/50', iconColor: 'text-purple-400' },
+      { title: 'GitHub', desc: 'Manage projects professionally using version control.', icon: 'github', color: 'from-gray-500/20 to-slate-500/20', borderColor: 'group-hover:border-gray-400/50', iconColor: 'text-gray-300' },
+      { title: 'React', desc: 'Develop modern, responsive user interfaces.', icon: 'code-2', color: 'from-cyan-500/20 to-blue-500/20', borderColor: 'group-hover:border-cyan-400/50', iconColor: 'text-cyan-400' },
+      { title: 'Vercel', desc: 'Deploy applications quickly with production hosting.', icon: 'triangle', color: 'from-white/10 to-gray-500/10', borderColor: 'group-hover:border-white/50', iconColor: 'text-white fill-white' },
+      { title: 'Render', desc: 'Host APIs, databases, and backend services.', icon: 'server', color: 'from-emerald-500/20 to-teal-500/20', borderColor: 'group-hover:border-emerald-400/50', iconColor: 'text-emerald-400' }
+    ].map(topic => `
+              <div class="p-8 rounded-[32px] flex flex-col gap-5 group border border-white/5 bg-white/[0.02] backdrop-blur-xl ${topic.borderColor} transition-all duration-500 hover:-translate-y-2 hover:bg-white/[0.04] relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-br ${topic.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-[32px]"></div>
+                <div class="w-14 h-14 bg-black/50 rounded-2xl flex items-center justify-center border border-white/10 group-hover:scale-110 transition-transform duration-500 shadow-xl relative z-10">
+                  <i data-lucide="${topic.icon}" class="w-7 h-7 ${topic.iconColor}"></i>
                 </div>
-                <h4 class="text-2xl font-bold text-[#ecddf9] tracking-wide mt-2">${topic.title}</h4>
-                <p class="text-[#958da1] text-sm leading-relaxed group-hover:text-[#ccc3d7] transition-colors">${topic.desc}</p>
+                <div class="relative z-10">
+                  <h4 class="text-2xl font-bold text-white tracking-tight mb-2">${topic.title}</h4>
+                  <p class="text-white/60 text-sm leading-relaxed group-hover:text-white/80 transition-colors">${topic.desc}</p>
+                </div>
               </div>
             `).join('')}
           </div>
         </div>
 
-        <!-- Two Column: Who Should Attend & What You Will Learn -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-32 fade-in-section">
+        <!-- WHO SHOULD ATTEND -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-32 fade-in-section">
           
-          <!-- Who Should Attend -->
-          <div class="glass-card rounded-3xl p-10 md:p-14 border border-[#d3bbff]/10 flex flex-col h-full bg-[#120a1d]/60 backdrop-blur-xl hover:border-[#d3bbff]/30 transition-all">
-            <h3 class="text-3xl font-bold text-[#ecddf9] mb-8 tracking-tight">Who Should Attend?</h3>
-            <p class="text-[#ccc3d7] mb-8 text-lg font-light">This live masterclass is perfectly designed for:</p>
-            <div class="flex flex-col gap-5">
+          <div class="rounded-[40px] p-10 md:p-14 border border-white/10 flex flex-col h-full bg-white/[0.02] backdrop-blur-xl hover:border-white/20 transition-all group relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-purple-500/10 blur-[60px] rounded-full group-hover:bg-purple-500/20 transition-colors duration-700"></div>
+            <h3 class="text-3xl font-bold text-white mb-6 tracking-tight relative z-10">Who Should Attend?</h3>
+            <p class="text-white/60 mb-8 text-lg font-light relative z-10">This live masterclass is perfectly designed for:</p>
+            <div class="flex flex-col gap-4 relative z-10">
               ${[
-                'Students & Freshers', 'Software Developers', 'AI Enthusiasts',
-                'Full Stack Engineers', 'Anyone looking to build modern AI apps'
-              ].map(item => `
-                <div class="flex items-center gap-4">
-                  <div class="w-2 h-2 rounded-full bg-[#c084fc] shadow-[0_0_10px_rgba(192,132,252,0.8)]"></div>
-                  <span class="text-[#ecddf9] text-base md:text-lg font-medium">${item}</span>
+      'Students & Freshers', 'Software Developers', 'AI Enthusiasts',
+      'Full Stack Engineers', 'Anyone looking to build modern AI apps'
+    ].map(item => `
+                <div class="flex items-center gap-4 bg-black/20 p-4 rounded-2xl border border-white/5 hover:border-white/10 transition-colors">
+                  <div class="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center shrink-0">
+                    <i data-lucide="user" class="w-5 h-5 text-purple-300"></i>
+                  </div>
+                  <span class="text-white/90 text-base font-medium">${item}</span>
                 </div>
               `).join('')}
             </div>
           </div>
 
-          <!-- What You Will Learn -->
-          <div class="glass-card rounded-3xl p-10 md:p-14 border border-[#d3bbff]/10 flex flex-col h-full bg-gradient-to-br from-[#120a1d]/60 to-[#201533]/60 backdrop-blur-xl hover:border-[#d3bbff]/30 transition-all">
-            <h3 class="text-3xl font-bold text-[#ecddf9] mb-8 tracking-tight">What You Will Learn</h3>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-8">
+          <div class="rounded-[40px] p-10 md:p-14 border border-white/10 flex flex-col h-full bg-gradient-to-br from-white/[0.04] to-transparent backdrop-blur-xl hover:border-white/20 transition-all group relative overflow-hidden">
+             <div class="absolute bottom-0 left-0 w-64 h-64 bg-blue-500/10 blur-[60px] rounded-full group-hover:bg-blue-500/20 transition-colors duration-700"></div>
+            <h3 class="text-3xl font-bold text-white mb-8 tracking-tight relative z-10">What You Will Learn</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-4 relative z-10">
               ${[
-                'Build AI apps from scratch', 'Modern AI workflow',
-                'Accelerate with AI tools', 'Collaborate via GitHub',
-                'Responsive React UIs', 'Deploy using Vercel',
-                'Backend hosting via Render', 'Startup best practices'
-              ].map(item => `
-                <div class="flex items-start gap-3 group">
-                  <div class="mt-1 w-5 h-5 rounded-full bg-[#180f23] border border-[#6d28d9] flex items-center justify-center shrink-0 group-hover:bg-[#60a5fa] group-hover:border-[#60a5fa] transition-colors">
-                    <i data-lucide="check" class="w-3 h-3 text-[#d3bbff] group-hover:text-white transition-colors"></i>
+      'Build AI apps from scratch', 'Modern AI workflow',
+      'Accelerate with AI tools', 'Collaborate via GitHub',
+      'Responsive React UIs', 'Deploy using Vercel',
+      'Backend hosting via Render', 'Startup best practices'
+    ].map(item => `
+                <div class="flex items-center gap-4 bg-black/20 p-4 rounded-2xl border border-white/5 hover:border-white/10 transition-colors group/item">
+                  <div class="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center shrink-0 group-hover/item:bg-blue-500/40 transition-colors">
+                    <i data-lucide="check" class="w-4 h-4 text-blue-300"></i>
                   </div>
-                  <span class="text-[#ccc3d7] text-sm md:text-base font-medium group-hover:text-[#ecddf9] transition-colors">${item}</span>
+                  <span class="text-white/80 text-sm font-medium group-hover/item:text-white transition-colors">${item}</span>
                 </div>
               `).join('')}
             </div>
@@ -289,35 +273,37 @@ export function WebinarLanding() {
 
         </div>
 
-        <!-- Presenter Section Details -->
+        <!-- MENTOR -->
         <div class="mb-32 fade-in-section max-w-5xl mx-auto">
-          <div class="glass-card rounded-3xl overflow-hidden border border-[#d3bbff]/20 bg-[#120a1d]/80 backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
-            <div class="grid grid-cols-1 md:grid-cols-12">
-              <div class="md:col-span-5 bg-gradient-to-br from-[#2a1b42] to-[#120a1d] p-12 flex flex-col items-center justify-center text-center relative overflow-hidden border-r border-[#d3bbff]/10">
-                <div class="absolute inset-0 bg-[#60a5fa]/10 blur-[50px] rounded-full mix-blend-screen"></div>
-                <div class="w-48 h-48 rounded-full bg-gradient-to-tr from-[#60a5fa] to-[#c084fc] p-1 mb-8 relative z-10 shadow-[0_0_40px_rgba(96,165,250,0.3)]">
-                  <div class="w-full h-full rounded-full bg-[#120a1d] overflow-hidden flex items-center justify-center">
-                    <i data-lucide="user" class="w-20 h-20 text-[#d3bbff]"></i>
+          <div class="rounded-[40px] overflow-hidden border border-white/10 bg-white/[0.02] backdrop-blur-3xl shadow-2xl relative">
+            <div class="absolute inset-0 bg-gradient-to-r from-purple-500/5 to-blue-500/5 pointer-events-none"></div>
+            <div class="grid grid-cols-1 md:grid-cols-12 relative z-10">
+              <div class="md:col-span-5 bg-black/40 p-12 flex flex-col items-center justify-center text-center relative overflow-hidden border-r border-white/5">
+                <div class="w-48 h-48 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 p-[2px] mb-8 relative z-10 shadow-[0_0_40px_rgba(168,85,247,0.3)]">
+                  <div class="w-full h-full rounded-full bg-[#0a0514] overflow-hidden flex items-center justify-center">
+                    <i data-lucide="user" class="w-20 h-20 text-purple-300"></i>
                   </div>
                 </div>
-                <h4 class="text-4xl font-extrabold text-white mb-2 relative z-10">Nithin</h4>
-                <p class="text-[#60a5fa] font-bold tracking-widest uppercase text-sm mb-2 relative z-10">Founder & Director</p>
-                <p class="text-[#958da1] text-xs uppercase tracking-widest relative z-10">ZenithYugaTech</p>
+                <h4 class="text-4xl font-extrabold text-white mb-2">Nithin</h4>
+                <p class="text-blue-400 font-bold tracking-widest uppercase text-sm mb-2">Founder & Director</p>
+                <p class="text-white/40 text-xs uppercase tracking-[0.2em]">ZenithYugaTech</p>
               </div>
               <div class="md:col-span-7 p-10 md:p-16 flex flex-col justify-center">
-                <h3 class="text-3xl font-bold text-[#ecddf9] mb-6">Meet Your Mentor</h3>
-                <p class="text-[#ccc3d7] text-lg leading-relaxed mb-10 font-light">
+                <h3 class="text-3xl font-bold text-white mb-6 tracking-tight">Meet Your Mentor</h3>
+                <p class="text-white/60 text-lg leading-relaxed mb-10 font-light">
                   Learn directly from an experienced AI professional who has successfully built and deployed AI solutions for startups and businesses. Gain practical insights, modern industry workflows, and proven development techniques used in real-world high-scale projects.
                 </p>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   ${[
-                    '4+ Years in AI Development', '300+ AI Projects Delivered',
-                    'Worked with 30+ Brands', 'Full Stack Developer',
-                    'AI Workflow Consultant', 'Automation Expert'
-                  ].map(item => `
+      '4+ Years in AI Development', '300+ AI Projects Delivered',
+      'Worked with 30+ Brands', 'Full Stack Developer',
+      'AI Workflow Consultant', 'Automation Expert'
+    ].map(item => `
                     <div class="flex items-center gap-3">
-                      <i data-lucide="check-circle-2" class="w-5 h-5 text-[#c084fc]"></i>
-                      <span class="text-[#ecddf9] font-medium">${item}</span>
+                      <div class="w-6 h-6 rounded-full bg-purple-500/20 flex items-center justify-center shrink-0">
+                        <i data-lucide="check" class="w-3 h-3 text-purple-300"></i>
+                      </div>
+                      <span class="text-white/80 font-medium text-sm">${item}</span>
                     </div>
                   `).join('')}
                 </div>
@@ -326,62 +312,63 @@ export function WebinarLanding() {
           </div>
         </div>
 
-        <!-- Certificate & Testimonials Sections -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-32 fade-in-section">
+        <!-- CERTIFICATE & TESTIMONIALS -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-32 fade-in-section">
           <!-- Certificate -->
-          <div class="glass-card rounded-3xl p-10 md:p-14 border border-[#d3bbff]/20 flex flex-col h-full bg-gradient-to-br from-[#120a1d] to-[#201533] relative overflow-hidden group hover:border-[#60a5fa]/50 transition-colors">
-            <div class="absolute -right-10 -bottom-10 opacity-10 transform group-hover:scale-110 group-hover:rotate-12 transition-transform duration-700">
-              <i data-lucide="award" class="w-64 h-64 text-[#60a5fa]"></i>
+          <div class="rounded-[40px] p-10 md:p-14 border border-white/10 flex flex-col h-full bg-gradient-to-br from-white/[0.02] to-white/[0.05] relative overflow-hidden group hover:border-white/20 transition-all backdrop-blur-xl">
+            <div class="absolute -right-10 -bottom-10 opacity-5 transform group-hover:scale-110 group-hover:-rotate-12 transition-transform duration-700">
+              <i data-lucide="award" class="w-72 h-72 text-blue-400"></i>
             </div>
-            <div class="w-16 h-16 bg-[#c084fc]/10 border border-[#c084fc]/30 text-[#c084fc] rounded-2xl flex items-center justify-center mb-8 shadow-[0_0_20px_rgba(192,132,252,0.2)]">
+            <div class="w-16 h-16 bg-blue-500/20 border border-blue-500/30 text-blue-400 rounded-2xl flex items-center justify-center mb-8 shadow-[0_0_30px_rgba(59,130,246,0.2)] relative z-10 group-hover:scale-110 transition-transform">
               <i data-lucide="award" class="w-8 h-8"></i>
             </div>
-            <h3 class="text-3xl font-bold text-[#ecddf9] mb-4 relative z-10">Participation Certificate</h3>
-            <p class="text-[#ccc3d7] mb-6 text-lg font-light leading-relaxed relative z-10">
+            <h3 class="text-3xl font-bold text-white mb-4 relative z-10 tracking-tight">Participation Certificate</h3>
+            <p class="text-white/60 mb-6 text-lg font-light leading-relaxed relative z-10">
               Every participant who completes registration and attends the webinar will receive an official verifiable Participation Certificate from ZenithYugaTech.
             </p>
-            <p class="text-[#60a5fa] font-medium relative z-10">
+            <p class="text-blue-400 font-medium relative z-10 mt-auto">
               Perfect for your Resume, LinkedIn profile, and Portfolio.
             </p>
           </div>
           
           <!-- Testimonials -->
-          <div class="glass-card rounded-3xl p-10 md:p-14 border border-[#d3bbff]/10 flex flex-col h-full bg-[#120a1d]/60 backdrop-blur-xl">
-            <h3 class="text-2xl font-bold text-[#ecddf9] mb-8">Student Success</h3>
-            <div class="bg-[#180f23]/80 border border-[#d3bbff]/10 rounded-2xl p-8 flex flex-col items-center justify-center flex-1 relative group">
-              <div class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl"></div>
-              <i data-lucide="quote" class="w-10 h-10 text-[#60a5fa]/30 mb-6"></i>
-              <p class="text-[#ccc3d7] italic text-xl font-light text-center leading-relaxed">
+          <div class="rounded-[40px] p-10 md:p-14 border border-white/10 flex flex-col h-full bg-white/[0.02] backdrop-blur-xl hover:border-white/20 transition-all">
+            <h3 class="text-2xl font-bold text-white mb-8 tracking-tight">Student Success</h3>
+            <div class="bg-black/30 border border-white/5 rounded-[32px] p-8 flex flex-col items-center justify-center flex-1 relative group overflow-hidden hover:border-white/10 transition-all">
+              <div class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <i data-lucide="quote" class="w-10 h-10 text-white/10 mb-6 relative z-10 group-hover:text-white/20 transition-colors"></i>
+              <p class="text-white/60 italic text-xl font-light text-center leading-relaxed relative z-10">
                 "Your success story could be featured here after attending our webinar."
               </p>
             </div>
           </div>
         </div>
 
-        <!-- FAQ Section -->
-        <div class="max-w-4xl mx-auto mb-32 fade-in-section">
+        <!-- FAQ -->
+        <div class="max-w-3xl mx-auto mb-32 fade-in-section">
           <div class="text-center mb-12">
-            <h2 class="text-4xl md:text-5xl font-extrabold text-[#ecddf9] mb-4 tracking-tight">Got Questions?</h2>
-            <p class="text-[#958da1] text-lg">Everything you need to know about the webinar.</p>
+            <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-4 tracking-tight">Got Questions?</h2>
+            <p class="text-white/50 text-lg">Everything you need to know about the webinar.</p>
           </div>
-          <div class="glass-card rounded-3xl p-8 md:p-12 border border-[#d3bbff]/20 bg-[#120a1d]/80 backdrop-blur-xl shadow-xl">
+          <div class="rounded-[40px] p-6 md:p-10 border border-white/10 bg-white/[0.02] backdrop-blur-xl shadow-2xl flex flex-col gap-2">
             ${faqsHtml}
           </div>
         </div>
 
-        <!-- Final CTA -->
-        <div class="text-center mb-24 fade-in-section pb-10 max-w-5xl mx-auto">
-          <div class="glass-card p-14 md:p-20 rounded-[3rem] border border-[#d3bbff]/20 bg-gradient-to-t from-[#60a5fa]/10 via-[#120a1d]/80 to-[#120a1d]/80 backdrop-blur-2xl shadow-[0_0_80px_rgba(96,165,250,0.15)] relative overflow-hidden">
-            <div class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:14px_14px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)]"></div>
+        <!-- FINAL CTA -->
+        <div class="text-center mb-24 fade-in-section pb-10 max-w-4xl mx-auto">
+          <div class="p-14 md:p-20 rounded-[48px] border border-white/10 bg-white/[0.03] backdrop-blur-3xl shadow-[0_0_80px_rgba(168,85,247,0.1)] relative overflow-hidden group hover:border-white/20 transition-all duration-500">
+            <div class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:16px_16px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)]"></div>
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-purple-500/10 blur-[100px] rounded-full group-hover:bg-purple-500/20 transition-colors duration-1000"></div>
             
-            <h2 class="text-5xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white to-[#c4abff] mb-6 tracking-tight relative z-10">Don't Miss Out!</h2>
-            <p class="text-[#ccc3d7] text-xl max-w-2xl mx-auto mb-12 font-light relative z-10">
+            <h2 class="text-5xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white to-white/60 mb-6 tracking-tight relative z-10">Don't Miss Out!</h2>
+            <p class="text-white/60 text-lg max-w-2xl mx-auto mb-10 font-light relative z-10">
               Secure your spot today and unlock the skills required to build, deploy, and scale modern AI applications.
             </p>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfycyrCNocF5NCv8bKO_fVBRm41fxWGkyIGtE0KD4GateyZAw/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer" id="final-cta-btn" class="relative overflow-hidden inline-flex items-center justify-center gap-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white px-14 py-6 rounded-full font-bold text-xl transition-all transform hover:scale-105 shadow-[0_0_50px_rgba(37,99,235,0.6)] cursor-pointer group border border-blue-400/30 z-10">
-              <span class="absolute inset-0 w-full h-full bg-gradient-to-b from-white/20 to-transparent pointer-events-none rounded-full"></span>
-              <span class="absolute top-0 -inset-full h-full w-1/2 z-0 block transform -skew-x-12 bg-gradient-to-r from-transparent to-white opacity-20 group-hover:animate-[shimmer_1.5s_infinite]"></span>
-              <span class="relative z-10 drop-shadow-md">🚀 Register Now for ₹ 69 Only</span>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfycyrCNocF5NCv8bKO_fVBRm41fxWGkyIGtE0KD4GateyZAw/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer" id="final-cta-btn" class="relative overflow-hidden inline-flex items-center justify-center gap-2 bg-gradient-to-r from-purple-600 to-blue-600 text-white px-10 py-5 rounded-2xl font-bold text-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_40px_-10px_rgba(147,51,234,0.6)] z-10 cursor-pointer w-full sm:w-auto border border-purple-400/30 group">
+              <span class="absolute top-0 -inset-full h-full w-1/2 z-0 block transform -skew-x-12 bg-gradient-to-r from-transparent to-white/20 opacity-30 group-hover:animate-[shimmer_1.5s_infinite]"></span>
+              <span class="relative z-10 flex items-center gap-2 drop-shadow-md">Register Now <span class="bg-white/20 px-2.5 py-1 rounded-lg text-sm ml-1 border border-white/10">₹69</span></span>
+              <i data-lucide="arrow-right" class="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform drop-shadow-md"></i>
             </a>
           </div>
         </div>
@@ -389,22 +376,20 @@ export function WebinarLanding() {
         </div>
       </div>
       
-      <!-- Sticky Close Button -->
-      <button id="close-webinar-btn" class="fixed top-6 right-6 z-[100] w-12 h-12 bg-[#120a1d]/80 backdrop-blur-xl text-[#ecddf9] rounded-full flex items-center justify-center hover:bg-white/10 hover:text-white transition-all border border-[#d3bbff]/30 group shadow-[0_0_20px_rgba(0,0,0,0.5)]">
+      <button id="close-webinar-btn" class="fixed top-6 right-6 z-[100] w-12 h-12 bg-white/5 backdrop-blur-xl text-white rounded-full flex items-center justify-center hover:bg-white/20 transition-all border border-white/10 shadow-2xl group">
         <i data-lucide="x" class="w-5 h-5 group-hover:rotate-90 transition-transform duration-300"></i>
       </button>
 
-      <!-- Sticky Register Button (Shows on scroll) -->
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSfycyrCNocF5NCv8bKO_fVBRm41fxWGkyIGtE0KD4GateyZAw/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer" id="sticky-register-btn" class="fixed bottom-6 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:top-1/2 md:-translate-y-1/2 md:bottom-auto md:right-6 z-[90] px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold rounded-full shadow-[0_0_40px_rgba(37,99,235,0.8)] animate-pulse-border-glow cursor-pointer flex items-center justify-center border border-blue-400/50 translate-y-32 md:translate-y-[calc(-50%+8rem)] opacity-0 transition-all duration-500 hover:scale-110 pointer-events-none whitespace-nowrap overflow-hidden group">
-        <span class="absolute inset-0 w-full h-full bg-gradient-to-b from-white/20 to-transparent pointer-events-none rounded-full"></span>
-        <span class="absolute top-0 -inset-full h-full w-1/2 z-0 block transform -skew-x-12 bg-gradient-to-r from-transparent to-white opacity-20 group-hover:animate-[shimmer_1.5s_infinite]"></span>
-        <span class="relative z-10 drop-shadow-md flex items-center">🚀 Register Now for ₹ 69 Only</span>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSfycyrCNocF5NCv8bKO_fVBRm41fxWGkyIGtE0KD4GateyZAw/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer" id="sticky-register-btn" class="fixed bottom-6 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:top-1/2 md:-translate-y-1/2 md:bottom-auto md:right-6 z-[90] px-6 py-3.5 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold rounded-2xl shadow-[0_0_30px_rgba(147,51,234,0.4)] cursor-pointer flex items-center justify-center border border-purple-400/50 translate-y-32 md:translate-y-[calc(-50%+8rem)] opacity-0 transition-all duration-500 hover:scale-[1.05] pointer-events-none group">
+        <span class="absolute top-0 -inset-full h-full w-1/2 z-0 block transform -skew-x-12 bg-gradient-to-r from-transparent to-white/20 opacity-30 group-hover:animate-[shimmer_1.5s_infinite]"></span>
+        <span class="relative z-10 flex items-center gap-2 text-sm whitespace-nowrap drop-shadow-md">Register Now <span class="bg-white/20 px-1.5 py-0.5 rounded-md text-xs border border-white/10">₹69</span></span>
       </a>
 
       ${Footer()}
     </div>
   `;
 }
+
 
 export function setupWebinarLanding() {
   if (!ENABLE_WEBINAR) return;
@@ -414,7 +399,7 @@ export function setupWebinarLanding() {
   const stickyBtn = document.getElementById('sticky-register-btn');
   const viewAgendaBtn = document.getElementById('view-agenda-btn');
   const agendaSection = document.getElementById('agenda-section');
-  
+
   if (!container || !closeBtn) return;
 
   // Button Listeners for scrolling
@@ -494,9 +479,9 @@ export function setupWebinarLanding() {
     if (!skipHistoryUpdate && window.location.pathname !== '/webinar') {
       window.history.pushState({ modal: 'webinar' }, '', '/webinar');
     }
-    
+
     container.style.display = 'block';
-    
+
     // Start countdown
     updateCountdown();
     countdownInterval = setInterval(updateCountdown, 1000);
@@ -507,7 +492,7 @@ export function setupWebinarLanding() {
       container.style.pointerEvents = 'auto';
       container.style.transform = 'translateY(0)';
       document.body.style.overflow = 'hidden';
-      
+
       // Trigger animations
       const sections = container.querySelectorAll('.fade-in-section');
       sections.forEach(section => {
@@ -527,20 +512,20 @@ export function setupWebinarLanding() {
     container.style.pointerEvents = 'none';
     container.style.transform = 'translateY(4rem)';
     document.body.style.overflow = '';
-    
+
     if (countdownInterval) clearInterval(countdownInterval);
 
     if (!skipHistoryUpdate && window.location.pathname === '/webinar') {
       window.history.pushState({}, '', '/');
     }
-    
+
     // Reset video iframe if exists to stop playing
     const iframe = container.querySelector('iframe');
     if (iframe) {
       const src = iframe.src;
       iframe.src = src;
     }
-    
+
     setTimeout(() => {
       container.style.display = 'none';
       container.scrollTop = 0; // Reset scroll position
@@ -666,7 +651,7 @@ export function setupWebinarLanding() {
 function isElementInViewport(el, container) {
   const rect = el.getBoundingClientRect();
   const containerRect = container.getBoundingClientRect();
-  
+
   return (
     rect.top >= containerRect.top - 100 &&
     rect.left >= containerRect.left &&
