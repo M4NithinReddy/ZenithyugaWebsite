@@ -6,26 +6,26 @@
   --color-on-primary: #3f008d;
   --color-primary-container: #6d28d9;
   --color-on-primary-container: #dac5ff;
-  
+
   --color-secondary: #d1bcff;
   --color-on-secondary: #391e70;
   --color-secondary-container: #53398b;
   --color-on-secondary-container: #c4abff;
-  
+
   --color-tertiary: #c8c2e9;
   --color-on-tertiary: #302c4b;
   --color-tertiary-container: #595476;
   --color-on-tertiary-container: #d1caf2;
-  
+
   --color-surface-custom: #180f23;
   --color-on-surface-custom: #ecddf9;
   --color-on-surface-variant: #ccc3d7;
   --color-outline-custom: #958da1;
   --color-outline-variant-custom: #4a4455;
-  
+
   --color-background-custom: #180f23;
   --color-on-background-custom: #ecddf9;
-  
+
   --color-surface-dim-custom: #180f23;
   --color-surface-bright-custom: #3f354b;
   --color-surface-container-lowest: #120a1d;
@@ -125,7 +125,7 @@
 /* Deep background mesh overlay to prevent flat feeling */
 .bg-gradient-mesh {
   background-color: #180f23;
-  background-image: 
+  background-image:
     radial-gradient(at 0% 0%, rgba(109, 40, 217, 0.18) 0px, transparent 60%),
     radial-gradient(at 100% 100%, rgba(83, 57, 139, 0.18) 0px, transparent 60%),
     radial-gradient(at 50% 50%, rgba(36, 28, 48, 0.5) 0px, transparent 80%);
@@ -138,8 +138,17 @@
 }
 
 @keyframes pulse-slow {
-  0%, 100% { opacity: 0.25; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(1.05); }
+
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: scale(1.05);
+  }
 }
 
 .animate-pulse-slow {
@@ -151,21 +160,27 @@
   width: 8px;
   height: 8px;
 }
+
 ::-webkit-scrollbar-track {
   background: #120a1d;
 }
+
 ::-webkit-scrollbar-thumb {
   background: #3a3146;
   border-radius: 4px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: #d3bbff;
 }
 
 /* Spinner for contact form transmitting state */
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
+
 .spin-anim {
   animation: spin 1.2s linear infinite;
 }
@@ -209,22 +224,39 @@ a:hover [data-lucide] {
 .view-enter {
   animation: viewEnter 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
+
 @keyframes viewEnter {
-  from { opacity: 0; transform: translateY(12px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Marquee scroll for client logos */
 @keyframes marquee-scroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
 }
+
 .marquee-track {
   display: flex;
   width: max-content;
   animation: marquee-scroll 30s linear infinite;
 }
-.marquee-track:hover { animation-play-state: paused; }
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
 
 /* Fade-in on scroll */
 .fade-in-section {
@@ -232,6 +264,7 @@ a:hover [data-lucide] {
   transform: translateY(0);
   transition: opacity 0.7s ease, transform 0.7s ease;
 }
+
 .fade-in-section.visible {
   opacity: 1;
   transform: translateY(0);
@@ -239,9 +272,12 @@ a:hover [data-lucide] {
 
 /* Wave animation for loading text */
 @keyframes wave {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-8px);
   }
@@ -257,9 +293,11 @@ a:hover [data-lucide] {
   0% {
     width: 0%;
   }
+
   50% {
     width: 70%;
   }
+
   100% {
     width: 100%;
   }
@@ -290,48 +328,56 @@ a:hover [data-lucide] {
     left: 50%;
     opacity: 0.06;
   }
+
   12.5% {
     transform: translate(-50%, -50%) scale(1.05) rotate(5deg);
     top: 25%;
     left: 75%;
     opacity: 0.08;
   }
+
   25% {
     transform: translate(-50%, -50%) scale(0.95) rotate(-3deg);
     top: 15%;
     left: 85%;
     opacity: 0.1;
   }
+
   37.5% {
     transform: translate(-50%, -50%) scale(1.08) rotate(8deg);
     top: 40%;
     left: 90%;
     opacity: 0.07;
   }
+
   50% {
     transform: translate(-50%, -50%) scale(1) rotate(0deg);
     top: 70%;
     left: 70%;
     opacity: 0.09;
   }
+
   62.5% {
     transform: translate(-50%, -50%) scale(1.05) rotate(-5deg);
     top: 80%;
     left: 40%;
     opacity: 0.08;
   }
+
   75% {
     transform: translate(-50%, -50%) scale(0.95) rotate(3deg);
     top: 60%;
     left: 15%;
     opacity: 0.1;
   }
+
   87.5% {
     transform: translate(-50%, -50%) scale(1.08) rotate(-8deg);
     top: 30%;
     left: 20%;
     opacity: 0.07;
   }
+
   100% {
     transform: translate(-50%, -50%) scale(1) rotate(0deg);
     top: 50%;
@@ -341,9 +387,12 @@ a:hover [data-lucide] {
 }
 
 @keyframes hero-logo-glow {
-  0%, 100% {
+
+  0%,
+  100% {
     filter: blur(0px) drop-shadow(0 0 40px rgba(211, 187, 255, 0.1));
   }
+
   50% {
     filter: blur(1px) drop-shadow(0 0 80px rgba(211, 187, 255, 0.2));
   }
@@ -373,5 +422,67 @@ a:hover [data-lucide] {
   border: 1px solid rgba(211, 187, 255, 0.06);
   pointer-events: none;
   z-index: 0;
-  animation: hero-logo-float 20s ease-in-out infinite reverse;
+}
+
+/* --- Webinar Landing Custom Animations --- */
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-20px) rotate(10deg);
+  }
+
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
+    transform: scale(1);
+  }
+
+  50% {
+    box-shadow: 0 0 30px rgba(211, 187, 255, 0.8);
+    transform: scale(1.05);
+  }
+}
+
+.webinar-blob {
+  animation: pulse-slow 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up {
+  animation: fade-in-up 0.3s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+.animate-float {
+  animation: float 12s ease-in-out infinite;
+}
+
+@keyframes text-shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: -200% 50%;
+  }
+}
+.animate-text-shimmer {
+  animation: text-shimmer 4s linear infinite;
 }

@@ -8,6 +8,8 @@ import { ProjectsView, setupProjectsView } from './components/ProjectsView.js';
 import { ServicesView, setupServicesView } from './components/ServicesView.js';
 import { ContactView, setupContactView } from './components/ContactView.js';
 import { LoadingAnimation, setupLoadingAnimation } from './components/LoadingAnimation.js';
+import { WebinarLanding, setupWebinarLanding } from './components/WebinarLanding.js';
+import { AiChatBot, setupAiChatBot, ENABLE_GLOBAL_AI_CHAT } from './components/AiChatBot.js';
 
 // Make lucide globally accessible for dynamic re-renders
 window.lucide = { createIcons: () => createIcons({ icons }) };
@@ -24,22 +26,22 @@ const root = document.getElementById('root');
 
 const getViewHtml = (tab) => {
   switch (tab) {
-    case 'about':    return AboutView();
+    case 'about': return AboutView();
     case 'projects': return ProjectsView();
     case 'services': return ServicesView();
-    case 'contact':  return ContactView();
+    case 'contact': return ContactView();
     case 'home':
-    default:         return HomeView();
+    default: return HomeView();
   }
 };
 
 const runViewSetup = (tab) => {
   switch (tab) {
-    case 'home':     if (window.setupHomeView)     window.setupHomeView();     break;
-    case 'about':    setupAboutView(); break;
+    case 'home': if (window.setupHomeView) window.setupHomeView(); break;
+    case 'about': setupAboutView(); break;
     case 'projects': if (window.setupProjectsView) window.setupProjectsView(); break;
     case 'services': if (window.setupServicesView) window.setupServicesView(); break;
-    case 'contact':  if (window.setupContactView)  window.setupContactView();  break;
+    case 'contact': if (window.setupContactView) window.setupContactView(); break;
   }
 };
 
@@ -82,7 +84,7 @@ const navigate = (tab) => {
 const renderApp = () => {
   // Show loading screen first
   root.innerHTML = LoadingAnimation();
-  
+
   // After loading animation completes, show the main app
   setTimeout(() => {
     root.innerHTML = `
@@ -95,14 +97,17 @@ const renderApp = () => {
         ${Footer()}
       </div>
 
+      <!-- Global Overlays -->
+      ${WebinarLanding()}
+      ${ENABLE_GLOBAL_AI_CHAT ? AiChatBot() : ''}
+
       <!-- Go to Top Button -->
       <button
         id="go-to-top"
-        aria-label="Scroll to top"
-        class="fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full bg-[#6d28d9] hover:bg-[#5b00c5] border border-[#d3bbff]/20 flex items-center justify-center shadow-[0_4px_24px_rgba(109,40,217,0.45)] hover:shadow-[0_4px_32px_rgba(109,40,217,0.65)] transition-all duration-300 cursor-pointer opacity-0 pointer-events-none translate-y-4"
-        style="transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;"
+        class="fixed bottom-[104px] right-6 z-[60] w-12 h-12 bg-gradient-to-br from-[#180f23] to-[#201533] border border-[#d3bbff]/20 text-[#ecddf9] hover:text-white hover:border-[#d3bbff]/50 rounded-full shadow-[0_4px_24px_rgba(109,40,217,0.3)] flex items-center justify-center cursor-pointer transition-all duration-300 hover:scale-110 opacity-0 pointer-events-none translate-y-8"
+        aria-label="Go to top"
       >
-        <i data-lucide="chevron-up" class="w-5 h-5 text-[#ecddf9]"></i>
+        <i data-lucide="chevron-up" class="w-6 h-6 text-white"></i>
       </button>`;
 
     // Recreate all lucide icons
@@ -119,12 +124,19 @@ const renderApp = () => {
     // Run view-specific setup
     setupHeader();
     runViewSetup(currentTab);
+    setupWebinarLanding();
+    setupAiChatBot();
 
-    // Go to top button
+    // Go to top button click
     const goTopBtn = document.getElementById('go-to-top');
     if (goTopBtn) {
       goTopBtn.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        const webinar = document.getElementById('webinar-landing');
+        if (webinar && webinar.style.opacity === '1') {
+          webinar.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
       });
     }
     setupScrollToTop();
@@ -143,22 +155,33 @@ const renderApp = () => {
 // Scroll listener for Go-to-top visibility
 function setupScrollToTop() {
   const btn = document.getElementById('go-to-top');
-  if (!btn) return;
-  const onScroll = () => {
-    if (window.scrollY > 300) {
+  const webinar = document.getElementById('webinar-landing');
+
+  const updateVisibility = () => {
+    if (!btn) return;
+    const webinarScroll = (webinar && webinar.style.opacity === '1') ? webinar.scrollTop : 0;
+    const windowScroll = window.scrollY;
+
+    if (windowScroll > 250 || webinarScroll > 250) {
       btn.style.opacity = '1';
       btn.style.pointerEvents = 'auto';
       btn.style.transform = 'translateY(0)';
     } else {
       btn.style.opacity = '0';
       btn.style.pointerEvents = 'none';
-      btn.style.transform = 'translateY(1rem)';
+      btn.style.transform = 'translateY(2rem)';
     }
   };
+
   window.removeEventListener('scroll', window._goTopScroll);
-  window._goTopScroll = onScroll;
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
+  window._goTopScroll = updateVisibility;
+  window.addEventListener('scroll', updateVisibility, { passive: true });
+  if (webinar) {
+    webinar.removeEventListener('scroll', window._goTopWebinarScroll);
+    window._goTopWebinarScroll = updateVisibility;
+    webinar.addEventListener('scroll', updateVisibility, { passive: true });
+  }
+  updateVisibility();
 }
 
 // Initial render

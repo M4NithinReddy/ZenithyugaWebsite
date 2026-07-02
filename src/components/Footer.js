@@ -1,6 +1,6 @@
 export function Footer() {
   return `
-    <footer class="w-full border-t border-[#d3bbff]/10 bg-[#120a1d]/80 backdrop-blur-md py-12 px-6 md:px-20 mt-auto">
+    <footer class="w-full border-t border-[#d3bbff]/10 bg-[#120a1d]/80 backdrop-blur-md pt-12 pb-8 px-6 md:px-20 mt-auto shrink-0">
       <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8">
         
         <div class="md:col-span-2 flex flex-col gap-4">
