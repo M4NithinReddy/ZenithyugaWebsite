@@ -10,6 +10,7 @@ import { ContactView, setupContactView } from './components/ContactView.js';
 import { LoadingAnimation, setupLoadingAnimation } from './components/LoadingAnimation.js';
 import { WebinarLanding, setupWebinarLanding } from './components/WebinarLanding.js';
 import { AiChatBot, setupAiChatBot, ENABLE_GLOBAL_AI_CHAT } from './components/AiChatBot.js';
+import { AdminDashboard, setupAdminDashboard } from './components/AdminDashboard.js';
 
 // Make lucide globally accessible for dynamic re-renders
 window.lucide = { createIcons: () => createIcons({ icons }) };
@@ -19,9 +20,10 @@ window.setupHomeView = setupHomeView;
 window.setupProjectsView = setupProjectsView;
 window.setupServicesView = setupServicesView;
 window.setupContactView = setupContactView;
+window.setupAdminDashboard = setupAdminDashboard;
 window.updateNotificationBell = updateNotificationBell;
 
-let currentTab = 'home';
+let currentTab = window.location.pathname === '/admin' ? 'admin' : 'home';
 const root = document.getElementById('root');
 
 const getViewHtml = (tab) => {
@@ -30,6 +32,7 @@ const getViewHtml = (tab) => {
     case 'projects': return ProjectsView();
     case 'services': return ServicesView();
     case 'contact': return ContactView();
+    case 'admin': return AdminDashboard();
     case 'home':
     default: return HomeView();
   }
@@ -42,6 +45,7 @@ const runViewSetup = (tab) => {
     case 'projects': if (window.setupProjectsView) window.setupProjectsView(); break;
     case 'services': if (window.setupServicesView) window.setupServicesView(); break;
     case 'contact': if (window.setupContactView) window.setupContactView(); break;
+    case 'admin': if (window.setupAdminDashboard) window.setupAdminDashboard(); break;
   }
 };
 
@@ -67,6 +71,13 @@ function setupAboutView() {
 const navigate = (tab) => {
   if (tab === currentTab) return;
   currentTab = tab;
+
+  // SPA navigation routing
+  if (tab === 'admin') {
+    window.history.pushState({ tab: 'admin' }, '', '/admin');
+  } else if (window.location.pathname === '/admin') {
+    window.history.pushState({}, '', '/');
+  }
 
   // Fade out
   const mainEl = root.querySelector('main');
