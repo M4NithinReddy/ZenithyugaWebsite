@@ -81,12 +81,12 @@ export function WebinarLanding() {
             </div>
             
             <div class="flex flex-col sm:flex-row items-center gap-4 mt-4 fade-in-section w-full sm:w-auto" style="transition-delay: 500ms">
-              <a href="https://docs.google.com/forms/d/e/1FAIpQLSfycyrCNocF5NCv8bKO_fVBRm41fxWGkyIGtE0KD4GateyZAw/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer" id="hero-register-btn" class="relative overflow-hidden flex items-center justify-center gap-2 bg-gradient-to-r from-purple-600 to-blue-600 text-white px-8 py-4 rounded-xl font-bold text-[17px] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_40px_-10px_rgba(147,51,234,0.5)] group w-full sm:w-auto border border-purple-400/30">
+              <button id="hero-register-btn" class="relative overflow-hidden flex items-center justify-center gap-2 bg-gradient-to-r from-purple-600 to-blue-600 text-white px-8 py-4 rounded-xl font-bold text-[17px] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_40px_-10px_rgba(147,51,234,0.5)] group w-full sm:w-auto border border-purple-400/30 cursor-pointer">
                 <span class="absolute top-0 -inset-full h-full w-1/2 z-0 block transform -skew-x-12 bg-gradient-to-r from-transparent to-white/20 opacity-30 group-hover:animate-[shimmer_1.5s_infinite]"></span>
                 <span class="relative z-10 flex items-center gap-2 drop-shadow-md">Register Now <span class="bg-white/20 px-2 py-0.5 rounded-md text-sm ml-1 border border-white/10">₹69</span></span>
                 <i data-lucide="arrow-right" class="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform drop-shadow-md"></i>
-              </a>
-              <button id="view-agenda-btn" class="flex items-center justify-center gap-2 bg-purple-900/20 backdrop-blur-md text-white px-8 py-4 rounded-xl font-medium text-[17px] border border-purple-500/30 hover:border-purple-400/60 hover:bg-purple-800/40 transition-all duration-300 w-full sm:w-auto group shadow-[0_0_20px_-5px_rgba(147,51,234,0.2)]">
+              </button>
+              <button id="view-agenda-btn" class="flex items-center justify-center gap-2 bg-purple-900/20 backdrop-blur-md text-white px-8 py-4 rounded-xl font-medium text-[17px] border border-purple-500/30 hover:border-purple-400/60 hover:bg-purple-800/40 transition-all duration-300 w-full sm:w-auto group shadow-[0_0_20px_-5px_rgba(147,51,234,0.2)] text-left cursor-pointer">
                 View Agenda
               </button>
             </div>
@@ -365,11 +365,11 @@ export function WebinarLanding() {
             <p class="text-white/60 text-lg max-w-2xl mx-auto mb-10 font-light relative z-10">
               Secure your spot today and unlock the skills required to build, deploy, and scale modern AI applications.
             </p>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfycyrCNocF5NCv8bKO_fVBRm41fxWGkyIGtE0KD4GateyZAw/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer" id="final-cta-btn" class="relative overflow-hidden inline-flex items-center justify-center gap-2 bg-gradient-to-r from-purple-600 to-blue-600 text-white px-10 py-5 rounded-2xl font-bold text-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_40px_-10px_rgba(147,51,234,0.6)] z-10 cursor-pointer w-full sm:w-auto border border-purple-400/30 group">
+            <button id="final-cta-btn" class="relative overflow-hidden inline-flex items-center justify-center gap-2 bg-gradient-to-r from-purple-600 to-blue-600 text-white px-10 py-5 rounded-2xl font-bold text-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_40px_-10px_rgba(147,51,234,0.6)] z-10 cursor-pointer w-full sm:w-auto border border-purple-400/30 group">
               <span class="absolute top-0 -inset-full h-full w-1/2 z-0 block transform -skew-x-12 bg-gradient-to-r from-transparent to-white/20 opacity-30 group-hover:animate-[shimmer_1.5s_infinite]"></span>
               <span class="relative z-10 flex items-center gap-2 drop-shadow-md">Register Now <span class="bg-white/20 px-2.5 py-1 rounded-lg text-sm ml-1 border border-white/10">₹69</span></span>
               <i data-lucide="arrow-right" class="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform drop-shadow-md"></i>
-            </a>
+            </button>
           </div>
         </div>
 
@@ -380,10 +380,97 @@ export function WebinarLanding() {
         <i data-lucide="x" class="w-5 h-5 group-hover:rotate-90 transition-transform duration-300"></i>
       </button>
 
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSfycyrCNocF5NCv8bKO_fVBRm41fxWGkyIGtE0KD4GateyZAw/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer" id="sticky-register-btn" class="fixed bottom-6 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:top-1/2 md:-translate-y-1/2 md:bottom-auto md:right-6 z-[90] px-6 py-3.5 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold rounded-2xl shadow-[0_0_30px_rgba(147,51,234,0.4)] cursor-pointer flex items-center justify-center border border-purple-400/50 translate-y-32 md:translate-y-[calc(-50%+8rem)] opacity-0 transition-all duration-500 hover:scale-[1.05] pointer-events-none group">
+      <button id="sticky-register-btn" class="fixed bottom-6 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:top-1/2 md:-translate-y-1/2 md:bottom-auto md:right-6 z-[90] px-6 py-3.5 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold rounded-2xl shadow-[0_0_30px_rgba(147,51,234,0.4)] cursor-pointer flex items-center justify-center border border-purple-400/50 translate-y-32 md:translate-y-[calc(-50%+8rem)] opacity-0 transition-all duration-500 hover:scale-[1.05] pointer-events-none group">
         <span class="absolute top-0 -inset-full h-full w-1/2 z-0 block transform -skew-x-12 bg-gradient-to-r from-transparent to-white/20 opacity-30 group-hover:animate-[shimmer_1.5s_infinite]"></span>
         <span class="relative z-10 flex items-center gap-2 text-sm whitespace-nowrap drop-shadow-md">Register Now <span class="bg-white/20 px-1.5 py-0.5 rounded-md text-xs border border-white/10">₹69</span></span>
-      </a>
+      </button>
+
+      <!-- Registration Modal -->
+      <div id="registration-modal" class="fixed inset-0 z-[110] w-full h-[100dvh] flex items-center justify-center bg-black/85 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300 ease-out">
+        <div class="relative w-[90%] max-w-lg bg-gradient-to-br from-[#1c122c] to-[#0f081d] border border-white/10 rounded-3xl p-8 md:p-10 shadow-[0_20px_50px_rgba(109,40,217,0.3)] transform scale-95 transition-transform duration-300 overflow-y-auto max-h-[90vh]">
+          
+          <button id="close-registration-modal-btn" class="absolute top-6 right-6 text-white/50 hover:text-white transition-colors cursor-pointer bg-transparent border-none">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+          
+          <div class="text-center mb-8">
+            <h3 class="text-2xl font-black text-white mb-2 tracking-tight">Workshop Registration</h3>
+            <p class="text-white/60 text-sm">Secure your spot for the NextGen AI Tools Masterclass</p>
+          </div>
+          
+          <form id="registration-form" class="flex flex-col gap-5">
+            <!-- Full Name -->
+            <div class="flex flex-col gap-1.5 text-left">
+              <label for="reg-name" class="text-xs font-semibold text-[#d3bbff] uppercase tracking-wider pl-1 font-sans">Full Name</label>
+              <input type="text" id="reg-name" required class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-purple-500 focus:bg-white/10 transition-all font-sans text-sm" placeholder="John Doe">
+            </div>
+            
+            <!-- Email -->
+            <div class="flex flex-col gap-1.5 text-left">
+              <label for="reg-email" class="text-xs font-semibold text-[#d3bbff] uppercase tracking-wider pl-1 font-sans">Email Address</label>
+              <input type="email" id="reg-email" required class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-purple-500 focus:bg-white/10 transition-all font-sans text-sm" placeholder="john@example.com">
+            </div>
+
+            <!-- Phone (WhatsApp) -->
+            <div class="flex flex-col gap-1.5 text-left">
+              <label for="reg-phone" class="text-xs font-semibold text-[#d3bbff] uppercase tracking-wider pl-1 font-sans">WhatsApp Number</label>
+              <input type="tel" id="reg-phone" required class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-purple-500 focus:bg-white/10 transition-all font-sans text-sm" placeholder="+91 98765 43210">
+            </div>
+
+            <!-- Institution / Organization -->
+            <div class="flex flex-col gap-1.5 text-left">
+              <label for="reg-institution" class="text-xs font-semibold text-[#d3bbff] uppercase tracking-wider pl-1 font-sans">College / Organization</label>
+              <input type="text" id="reg-institution" required class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-purple-500 focus:bg-white/10 transition-all font-sans text-sm" placeholder="Your College or Company Name">
+            </div>
+
+            <!-- Role Selection -->
+            <div class="flex flex-col gap-1.5 text-left">
+              <label class="text-xs font-semibold text-[#d3bbff] uppercase tracking-wider pl-1 font-sans">I am a</label>
+              <div class="grid grid-cols-2 gap-3">
+                <label class="flex items-center justify-center gap-2 bg-white/5 border border-white/10 rounded-xl py-3 cursor-pointer hover:bg-white/10 hover:border-white/20 transition-all text-sm font-medium text-white/80">
+                  <input type="radio" name="reg-role" value="student" checked class="accent-purple-500">
+                  <span>Student</span>
+                </label>
+                <label class="flex items-center justify-center gap-2 bg-white/5 border border-white/10 rounded-xl py-3 cursor-pointer hover:bg-white/10 hover:border-white/20 transition-all text-sm font-medium text-white/80">
+                  <input type="radio" name="reg-role" value="professional" class="accent-purple-500">
+                  <span>Professional</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Why Attend -->
+            <div class="flex flex-col gap-1.5 text-left">
+              <label for="reg-why" class="text-xs font-semibold text-[#d3bbff] uppercase tracking-wider pl-1 font-sans">Why do you want to attend? (Optional)</label>
+              <textarea id="reg-why" rows="2" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-purple-500 focus:bg-white/10 transition-all font-sans text-sm resize-none" placeholder="Briefly describe what you hope to learn..."></textarea>
+            </div>
+
+            <!-- Error message container -->
+            <div id="registration-error" class="hidden text-red-400 text-xs font-semibold text-center mt-1 bg-red-950/20 border border-red-900/30 p-3 rounded-lg"></div>
+
+            <!-- Submit Button -->
+            <button type="submit" id="submit-registration-btn" class="w-full mt-2 relative overflow-hidden flex items-center justify-center gap-2 bg-gradient-to-r from-purple-600 to-blue-600 text-white py-4 rounded-xl font-bold text-base transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] cursor-pointer shadow-[0_0_30px_rgba(147,51,234,0.4)] border border-purple-400/30 group">
+              <span class="btn-text">Submit Registration</span>
+              <div class="btn-spinner hidden w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+            </button>
+          </form>
+          
+          <!-- Success State -->
+          <div id="registration-success-state" class="hidden flex flex-col items-center justify-center text-center py-6">
+            <div class="w-16 h-16 rounded-full bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center mb-6 shadow-[0_0_20px_rgba(16,185,129,0.3)]">
+              <i data-lucide="check" class="w-8 h-8 text-emerald-400"></i>
+            </div>
+            <h3 class="text-2xl font-black text-white mb-2 tracking-tight">Registration Confirmed!</h3>
+            <p class="text-white/70 text-sm leading-relaxed max-w-xs mb-8">
+              Awesome! You have successfully registered for the masterclass. We have sent the confirmation to your email.
+            </p>
+            <a href="https://chat.whatsapp.com/mock-link" target="_blank" rel="noopener noreferrer" class="w-full flex items-center justify-center gap-2.5 bg-[#25D366] hover:bg-[#20ba56] text-white py-4 rounded-xl font-bold text-base transition-all duration-300 hover:scale-[1.02] shadow-[0_4px_24px_rgba(37,211,102,0.3)]">
+              <i data-lucide="message-square" class="w-5 h-5"></i>
+              Join WhatsApp Community
+            </a>
+          </div>
+
+        </div>
+      </div>
 
       ${Footer()}
     </div>
@@ -393,6 +480,14 @@ export function WebinarLanding() {
 
 export function setupWebinarLanding() {
   if (!ENABLE_WEBINAR) return;
+
+  // Load Razorpay SDK Script
+  if (!document.getElementById('razorpay-checkout-script')) {
+    const script = document.createElement('script');
+    script.id = 'razorpay-checkout-script';
+    script.src = 'https://checkout.razorpay.com/v1/checkout.js';
+    document.body.appendChild(script);
+  }
 
   const container = document.getElementById('webinar-landing');
   const closeBtn = document.getElementById('close-webinar-btn');
@@ -406,6 +501,248 @@ export function setupWebinarLanding() {
   if (viewAgendaBtn) viewAgendaBtn.addEventListener('click', () => {
     if (agendaSection) agendaSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
+
+  // --- REGISTRATION MODAL LOGIC ---
+  const regModal = document.getElementById('registration-modal');
+  const closeRegModalBtn = document.getElementById('close-registration-modal-btn');
+  const regForm = document.getElementById('registration-form');
+  const regSuccessState = document.getElementById('registration-success-state');
+  const regErrorEl = document.getElementById('registration-error');
+  const submitRegBtn = document.getElementById('submit-registration-btn');
+
+  const openRegistrationModal = () => {
+    if (!regModal) return;
+    regModal.classList.remove('opacity-0', 'pointer-events-none');
+    regModal.classList.add('opacity-100');
+    const modalBox = regModal.querySelector('.relative');
+    if (modalBox) {
+      modalBox.classList.remove('scale-95');
+      modalBox.classList.add('scale-100');
+    }
+    // Reset form states
+    if (regForm) regForm.classList.remove('hidden');
+    if (regSuccessState) regSuccessState.classList.add('hidden');
+    if (regErrorEl) {
+      regErrorEl.classList.add('hidden');
+      regErrorEl.innerText = '';
+    }
+  };
+
+  const closeRegistrationModal = () => {
+    if (!regModal) return;
+    regModal.classList.add('opacity-0', 'pointer-events-none');
+    regModal.classList.remove('opacity-100');
+    const modalBox = regModal.querySelector('.relative');
+    if (modalBox) {
+      modalBox.classList.add('scale-95');
+      modalBox.classList.remove('scale-100');
+    }
+  };
+
+  // Wire up the open triggers
+  const heroRegBtn = document.getElementById('hero-register-btn');
+  const finalRegBtn = document.getElementById('final-cta-btn');
+
+  if (heroRegBtn) heroRegBtn.addEventListener('click', openRegistrationModal);
+  if (finalRegBtn) finalRegBtn.addEventListener('click', openRegistrationModal);
+  if (stickyBtn) stickyBtn.addEventListener('click', openRegistrationModal);
+
+  if (closeRegModalBtn) closeRegModalBtn.addEventListener('click', closeRegistrationModal);
+  if (regModal) {
+    regModal.addEventListener('click', (e) => {
+      if (e.target === regModal) closeRegistrationModal();
+    });
+  }
+
+  // Handle form submit
+  if (regForm) {
+    regForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const fullName = document.getElementById('reg-name').value.trim();
+      const email = document.getElementById('reg-email').value.trim();
+      const phone = document.getElementById('reg-phone').value.trim();
+      const institution = document.getElementById('reg-institution').value.trim();
+      const role = regForm.querySelector('input[name="reg-role"]:checked').value;
+      const whyAttend = document.getElementById('reg-why').value.trim();
+
+      // Show loader
+      if (submitRegBtn) {
+        submitRegBtn.disabled = true;
+        submitRegBtn.querySelector('.btn-text').classList.add('hidden');
+        submitRegBtn.querySelector('.btn-spinner').classList.remove('hidden');
+      }
+      if (regErrorEl) regErrorEl.classList.add('hidden');
+
+      const API_ENDPOINT = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
+        ? 'http://localhost:5000/api/registrations' 
+        : '/api/registrations';
+
+      try {
+        // Step 1: Create pending registration & Razorpay Order on backend
+        const response = await fetch(API_ENDPOINT, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            fullName,
+            email,
+            phone,
+            institution,
+            role,
+            whyAttend
+          })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok || !data.success) {
+          if (regErrorEl) {
+            regErrorEl.innerText = data.message || 'Registration failed. Please try again.';
+            regErrorEl.classList.remove('hidden');
+          }
+          // Reset loader
+          if (submitRegBtn) {
+            submitRegBtn.disabled = false;
+            submitRegBtn.querySelector('.btn-text').classList.remove('hidden');
+            submitRegBtn.querySelector('.btn-spinner').classList.add('hidden');
+          }
+          return;
+        }
+
+        // Step 2: Open Razorpay Checkout Modal
+        if (!window.Razorpay) {
+          if (regErrorEl) {
+            regErrorEl.innerText = 'Razorpay SDK failed to load. Please check your network connection.';
+            regErrorEl.classList.remove('hidden');
+          }
+          // Reset loader
+          if (submitRegBtn) {
+            submitRegBtn.disabled = false;
+            submitRegBtn.querySelector('.btn-text').classList.remove('hidden');
+            submitRegBtn.querySelector('.btn-spinner').classList.add('hidden');
+          }
+          return;
+        }
+
+        const options = {
+          key: data.keyId,
+          amount: data.amount,
+          currency: "INR",
+          name: "ZenithYugaTech",
+          description: "NextGen AI Tools Masterclass Registration",
+          order_id: data.orderId,
+          handler: async function (paymentResponse) {
+            // Step 3: Verify payment signature on backend
+            if (submitRegBtn) {
+              submitRegBtn.disabled = true;
+              // Update button UI to show verification in progress
+              const btnText = submitRegBtn.querySelector('.btn-text');
+              if (btnText) {
+                btnText.innerText = 'Verifying Payment...';
+                btnText.classList.remove('hidden');
+              }
+              submitRegBtn.querySelector('.btn-spinner').classList.remove('hidden');
+            }
+
+            try {
+              const verifyResponse = await fetch(`${API_ENDPOINT}/verify`, {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                  razorpay_payment_id: paymentResponse.razorpay_payment_id,
+                  razorpay_order_id: paymentResponse.razorpay_order_id,
+                  razorpay_signature: paymentResponse.razorpay_signature,
+                  registrationId: data.registrationId
+                })
+              });
+
+              const verifyData = await verifyResponse.json();
+
+              if (verifyResponse.ok && verifyData.success) {
+                // Dynamic WhatsApp Group link update from verified backend response
+                const waLinkBtn = regSuccessState.querySelector('a');
+                if (waLinkBtn && verifyData.whatsappLink) {
+                  waLinkBtn.href = verifyData.whatsappLink;
+                }
+                
+                if (regForm) regForm.classList.add('hidden');
+                if (regSuccessState) regSuccessState.classList.remove('hidden');
+                
+                if (window.lucide) {
+                  window.lucide.createIcons();
+                }
+              } else {
+                if (regErrorEl) {
+                  regErrorEl.innerText = verifyData.message || 'Payment verification failed.';
+                  regErrorEl.classList.remove('hidden');
+                }
+              }
+            } catch (err) {
+              console.error('Verification Error:', err);
+              if (regErrorEl) {
+                regErrorEl.innerText = 'Could not verify payment with the server. Please contact support.';
+                regErrorEl.classList.remove('hidden');
+              }
+            } finally {
+              // Reset loader UI text
+              if (submitRegBtn) {
+                submitRegBtn.disabled = false;
+                const btnText = submitRegBtn.querySelector('.btn-text');
+                if (btnText) {
+                  btnText.innerText = 'Submit Registration';
+                  btnText.classList.remove('hidden');
+                }
+                submitRegBtn.querySelector('.btn-spinner').classList.add('hidden');
+              }
+            }
+          },
+          prefill: {
+            name: fullName,
+            email: email,
+            contact: phone
+          },
+          theme: {
+            color: "#6d28d9"
+          },
+          modal: {
+            ondismiss: function () {
+              // Payment cancelled/dismissed by user
+              if (regErrorEl) {
+                regErrorEl.innerText = 'Payment cancelled. Complete the payment to secure your registration.';
+                regErrorEl.classList.remove('hidden');
+              }
+              // Reset loader
+              if (submitRegBtn) {
+                submitRegBtn.disabled = false;
+                submitRegBtn.querySelector('.btn-text').classList.remove('hidden');
+                submitRegBtn.querySelector('.btn-spinner').classList.add('hidden');
+              }
+            }
+          }
+        };
+
+        const rzp = new window.Razorpay(options);
+        rzp.open();
+
+      } catch (err) {
+        console.error('API Error:', err);
+        if (regErrorEl) {
+          regErrorEl.innerText = 'Could not connect to the server. Please check your network or make sure the backend is running.';
+          regErrorEl.classList.remove('hidden');
+        }
+        // Reset loader
+        if (submitRegBtn) {
+          submitRegBtn.disabled = false;
+          submitRegBtn.querySelector('.btn-text').classList.remove('hidden');
+          submitRegBtn.querySelector('.btn-spinner').classList.add('hidden');
+        }
+      }
+    });
+  }
 
   // Handle browser back/forward buttons
   window.addEventListener('popstate', (e) => {
