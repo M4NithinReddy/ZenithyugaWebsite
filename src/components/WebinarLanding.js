@@ -576,7 +576,7 @@ export function setupWebinarLanding() {
 
       const API_ENDPOINT = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
         ? 'http://localhost:5000/api/registrations' 
-        : '/api/registrations';
+        : 'https://webinarbackend-vr7l.onrender.com/api/registrations';
 
       try {
         // Step 1: Create pending registration & Razorpay Order on backend

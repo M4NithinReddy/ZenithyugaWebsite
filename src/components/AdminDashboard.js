@@ -213,7 +213,7 @@ export function setupAdminDashboard() {
 
         const LOGIN_ENDPOINT = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
           ? 'http://localhost:5000/api/registrations/login'
-          : '/api/registrations/login';
+          : 'https://webinarbackend-vr7l.onrender.com/api/registrations/login';
 
         try {
           const response = await fetch(LOGIN_ENDPOINT, {
@@ -274,7 +274,7 @@ export function setupAdminDashboard() {
   // API endpoint configuration
   const API_ENDPOINT = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
     ? 'http://localhost:5000/api/registrations'
-    : '/api/registrations';
+    : 'https://webinarbackend-vr7l.onrender.com/api/registrations';
 
   // Logout handler
   if (logoutBtn) {
