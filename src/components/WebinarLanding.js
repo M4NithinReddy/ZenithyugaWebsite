@@ -122,7 +122,7 @@ export function WebinarLanding() {
                 <div class="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-transparent"></div>
                 <div class="w-14 h-14 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 p-[2px] shrink-0 shadow-[0_0_20px_rgba(168,85,247,0.3)] relative z-10 group-hover:scale-105 transition-transform">
                   <div class="w-full h-full bg-[#0a0514] rounded-full overflow-hidden flex items-center justify-center">
-                    <i data-lucide="user" class="w-6 h-6 text-purple-300"></i>
+                    <img src="/mentor-nithin.png" alt="Nithin" class="w-full h-full object-cover rounded-full" />
                   </div>
                 </div>
                 <div class="flex flex-col relative z-10">
@@ -281,7 +281,7 @@ export function WebinarLanding() {
               <div class="md:col-span-5 bg-black/40 p-12 flex flex-col items-center justify-center text-center relative overflow-hidden border-r border-white/5">
                 <div class="w-48 h-48 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 p-[2px] mb-8 relative z-10 shadow-[0_0_40px_rgba(168,85,247,0.3)]">
                   <div class="w-full h-full rounded-full bg-[#0a0514] overflow-hidden flex items-center justify-center">
-                    <i data-lucide="user" class="w-20 h-20 text-purple-300"></i>
+                    <img src="/mentor-nithin.png" alt="Nithin - Mentor" class="w-full h-full object-cover rounded-full" />
                   </div>
                 </div>
                 <h4 class="text-4xl font-extrabold text-white mb-2">Nithin</h4>
