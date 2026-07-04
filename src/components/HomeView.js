@@ -115,30 +115,21 @@ export function HomeView() {
 
   return `
     <div class="w-full min-h-screen py-16 flex flex-col gap-24 font-sans select-none overflow-hidden">
-      <!-- Sticky Note for Webinar -->
-      <button onclick="openWebinarLanding()" class="hidden md:flex fixed top-40 right-10 z-[60] w-48 h-48 bg-gradient-to-br from-[#d3bbff] to-[#a855f7] rounded-bl-3xl rounded-tr-xl rounded-tl-xl rounded-br-xl shadow-[0_15px_35px_rgba(109,40,217,0.4)] p-5 cursor-pointer transform rotate-6 hover:rotate-0 hover:scale-110 transition-all duration-300 flex-col justify-between items-start animate-[float_4s_ease-in-out_infinite] group">
-        <div class="absolute top-0 right-0 w-10 h-10 bg-black/10 rounded-bl-3xl backdrop-blur-sm"></div>
-        <div class="absolute -top-4 left-1/2 -translate-x-1/2 drop-shadow-lg z-10">
-          <div class="w-8 h-8 bg-[#ecddf9] rounded-full border-4 border-[#3f008d] shadow-inner flex items-center justify-center">
-            <div class="w-2 h-2 bg-[#180f23] rounded-full"></div>
+      <!-- Sticky Note for Webinar (Fully Responsive) -->
+      <button onclick="openWebinarLanding()" class="flex fixed top-20 right-2 sm:top-24 sm:right-4 md:top-40 md:right-10 z-[100] w-28 h-28 sm:w-32 sm:h-32 md:w-48 md:h-48 bg-gradient-to-br from-[#d3bbff] to-[#a855f7] rounded-bl-2xl md:rounded-bl-3xl rounded-tr-lg md:rounded-tr-xl rounded-tl-lg md:rounded-tl-xl rounded-br-lg md:rounded-br-xl shadow-[0_10px_25px_rgba(109,40,217,0.4)] md:shadow-[0_15px_35px_rgba(109,40,217,0.4)] p-3 md:p-5 cursor-pointer transform rotate-6 hover:rotate-0 hover:scale-105 md:hover:scale-110 transition-all duration-300 flex-col justify-between items-start animate-[float_4s_ease-in-out_infinite] group">
+        <div class="absolute top-0 right-0 w-8 h-8 md:w-10 md:h-10 bg-black/10 rounded-bl-2xl md:rounded-bl-3xl backdrop-blur-sm"></div>
+        <div class="absolute -top-3 md:-top-4 left-1/2 -translate-x-1/2 drop-shadow-lg z-10">
+          <div class="w-6 h-6 md:w-8 md:h-8 bg-[#ecddf9] rounded-full border-2 md:border-4 border-[#3f008d] shadow-inner flex items-center justify-center">
+            <div class="w-1.5 h-1.5 md:w-2 md:h-2 bg-[#180f23] rounded-full"></div>
           </div>
         </div>
-        <div class="mt-4 text-[#180f23] font-bold font-headline text-xl leading-tight text-left relative z-10">
+        <div class="mt-2 md:mt-4 text-[#180f23] font-bold font-headline text-[12px] sm:text-[13px] md:text-xl leading-tight text-left relative z-10">
           NextGen AI<br/>Webinar!
         </div>
         <div class="w-full flex justify-between items-end relative z-10">
-          <span class="text-[#3f008d] text-xs font-mono font-bold bg-white/40 px-2 py-1 rounded-md shadow-sm">July 11</span>
-          <i data-lucide="arrow-right" class="w-5 h-5 text-[#3f008d] group-hover:translate-x-1 transition-transform"></i>
+          <span class="text-[#3f008d] text-[9px] sm:text-[10px] md:text-xs font-mono font-bold bg-white/40 px-1.5 py-0.5 md:px-2 md:py-1 rounded-sm md:rounded-md shadow-sm">July 11</span>
+          <i data-lucide="arrow-right" class="w-4 h-4 md:w-5 md:h-5 text-[#3f008d] group-hover:translate-x-1 transition-transform"></i>
         </div>
-      </button>
-
-      <!-- Mobile Sticky Note -->
-      <button onclick="openWebinarLanding()" class="md:hidden fixed bottom-6 right-6 z-[60] w-16 h-16 bg-gradient-to-br from-[#d3bbff] to-[#a855f7] rounded-full shadow-[0_10px_25px_rgba(109,40,217,0.5)] flex items-center justify-center cursor-pointer animate-[pulse-glow_2s_infinite] group">
-        <i data-lucide="calendar" class="w-6 h-6 text-[#180f23]"></i>
-        <span class="absolute -top-2 -right-2 flex h-4 w-4">
-          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-          <span class="relative inline-flex rounded-full h-4 w-4 bg-red-500"></span>
-        </span>
       </button>
 
       <!-- 1. Hero Section -->
