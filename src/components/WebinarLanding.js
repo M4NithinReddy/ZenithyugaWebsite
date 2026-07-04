@@ -394,7 +394,7 @@ export function WebinarLanding() {
           </button>
           
           <div class="text-center mb-8">
-            <h3 class="text-2xl font-black text-white mb-2 tracking-tight">Workshop Registration</h3>
+            <h3 class="text-2xl font-black text-white mb-2 tracking-tight">Webinar Registration</h3>
             <p class="text-white/60 text-sm">Secure your spot for the NextGen AI Tools Masterclass</p>
           </div>
           
@@ -510,8 +510,16 @@ export function setupWebinarLanding() {
   const regErrorEl = document.getElementById('registration-error');
   const submitRegBtn = document.getElementById('submit-registration-btn');
 
-  const openRegistrationModal = () => {
+  const openRegistrationModal = (e) => {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
     if (!regModal) return;
+    
+    // Prevent duplicate rendering/actions if already open
+    if (!regModal.classList.contains('opacity-0')) return;
+
     regModal.classList.remove('opacity-0', 'pointer-events-none');
     regModal.classList.add('opacity-100');
     const modalBox = regModal.querySelector('.relative');
@@ -526,6 +534,12 @@ export function setupWebinarLanding() {
       regErrorEl.classList.add('hidden');
       regErrorEl.innerText = '';
     }
+    
+    // Accessibility: Focus the first input field automatically
+    setTimeout(() => {
+      const firstInput = document.getElementById('reg-name');
+      if (firstInput) firstInput.focus();
+    }, 100);
   };
 
   const closeRegistrationModal = () => {
@@ -539,19 +553,45 @@ export function setupWebinarLanding() {
     }
   };
 
-  // Wire up the open triggers
+  // Keyboard accessibility: ESC to close the modal
+  if (!window._webinarEscListener) {
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        const currentModal = document.getElementById('registration-modal');
+        if (currentModal && !currentModal.classList.contains('opacity-0')) {
+          const closeBtn = document.getElementById('close-registration-modal-btn');
+          if (closeBtn) closeBtn.click();
+        }
+      }
+    });
+    window._webinarEscListener = true;
+  }
+
+  // Wire up the open triggers, preventing duplicate listeners
   const heroRegBtn = document.getElementById('hero-register-btn');
   const finalRegBtn = document.getElementById('final-cta-btn');
 
-  if (heroRegBtn) heroRegBtn.addEventListener('click', openRegistrationModal);
-  if (finalRegBtn) finalRegBtn.addEventListener('click', openRegistrationModal);
-  if (stickyBtn) stickyBtn.addEventListener('click', openRegistrationModal);
+  const setupRegBtn = (btn) => {
+    if (btn && !btn.dataset.regSetup) {
+      btn.addEventListener('click', openRegistrationModal);
+      btn.dataset.regSetup = 'true';
+    }
+  };
 
-  if (closeRegModalBtn) closeRegModalBtn.addEventListener('click', closeRegistrationModal);
-  if (regModal) {
+  setupRegBtn(heroRegBtn);
+  setupRegBtn(finalRegBtn);
+  if (typeof stickyBtn !== 'undefined') setupRegBtn(stickyBtn);
+
+  if (closeRegModalBtn && !closeRegModalBtn.dataset.regSetup) {
+    closeRegModalBtn.addEventListener('click', closeRegistrationModal);
+    closeRegModalBtn.dataset.regSetup = 'true';
+  }
+  
+  if (regModal && !regModal.dataset.regSetup) {
     regModal.addEventListener('click', (e) => {
       if (e.target === regModal) closeRegistrationModal();
     });
+    regModal.dataset.regSetup = 'true';
   }
 
   // Handle form submit
