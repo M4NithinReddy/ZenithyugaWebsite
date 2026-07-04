@@ -460,9 +460,13 @@ export function WebinarLanding() {
             <div class="w-16 h-16 rounded-full bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center mb-6 shadow-[0_0_20px_rgba(16,185,129,0.3)]">
               <i data-lucide="check" class="w-8 h-8 text-emerald-400"></i>
             </div>
-            <h3 class="text-2xl font-black text-white mb-2 tracking-tight">Registration Confirmed!</h3>
-            <p class="text-white/70 text-sm leading-relaxed max-w-xs mb-8">
-              Awesome! You have successfully registered for the masterclass. We have sent the confirmation to your email.
+            <h3 class="text-2xl font-black text-white mb-2 tracking-tight">🎉 Registration Successful!</h3>
+            <div id="wa-redirecting-state" class="flex flex-col items-center justify-center my-4">
+              <div class="w-8 h-8 border-4 border-emerald-500/30 border-t-emerald-500 rounded-full animate-spin mb-3"></div>
+              <p class="text-emerald-400 font-semibold text-sm">Redirecting you to our WhatsApp Community...</p>
+            </div>
+            <p class="text-white/70 text-sm leading-relaxed max-w-xs mb-6 mt-2">
+              Awesome! We have sent the confirmation to your email.
             </p>
             <a href="https://chat.whatsapp.com/Bi8vjKHDEXwGzyui1YYQdx" target="_blank" rel="noopener noreferrer" class="w-full flex items-center justify-center gap-2.5 bg-[#25D366] hover:bg-[#20ba56] text-white py-4 rounded-xl font-bold text-base transition-all duration-300 hover:scale-[1.02] shadow-[0_4px_24px_rgba(37,211,102,0.3)]">
               <i data-lucide="message-square" class="w-5 h-5"></i>
@@ -518,7 +522,7 @@ export function setupWebinarLanding() {
       e.stopPropagation();
     }
     if (!regModal) return;
-    
+
     // Prevent duplicate rendering/actions if already open
     if (!regModal.classList.contains('opacity-0')) return;
 
@@ -536,7 +540,7 @@ export function setupWebinarLanding() {
       regErrorEl.classList.add('hidden');
       regErrorEl.innerText = '';
     }
-    
+
     // Accessibility: Focus the first input field automatically
     setTimeout(() => {
       const firstInput = document.getElementById('reg-name');
@@ -588,7 +592,7 @@ export function setupWebinarLanding() {
     closeRegModalBtn.addEventListener('click', closeRegistrationModal);
     closeRegModalBtn.dataset.regSetup = 'true';
   }
-  
+
   if (regModal && !regModal.dataset.regSetup) {
     regModal.addEventListener('click', (e) => {
       if (e.target === regModal) closeRegistrationModal();
@@ -600,7 +604,7 @@ export function setupWebinarLanding() {
   if (regForm) {
     regForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      
+
       const fullName = document.getElementById('reg-name').value.trim();
       const email = document.getElementById('reg-email').value.trim();
       const phone = document.getElementById('reg-phone').value.trim();
@@ -616,8 +620,8 @@ export function setupWebinarLanding() {
       }
       if (regErrorEl) regErrorEl.classList.add('hidden');
 
-      const API_ENDPOINT = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
-        ? 'http://localhost:5000/api/registrations' 
+      const API_ENDPOINT = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+        ? 'http://localhost:5000/api/registrations'
         : 'https://webinarbackend-vr7l.onrender.com/api/registrations';
 
       try {
@@ -707,16 +711,32 @@ export function setupWebinarLanding() {
               if (verifyResponse.ok && verifyData.success) {
                 // Dynamic WhatsApp Group link update from verified backend response
                 const waLinkBtn = regSuccessState.querySelector('a');
-                if (waLinkBtn && verifyData.whatsappLink) {
-                  waLinkBtn.href = verifyData.whatsappLink;
+                const waLink = verifyData.whatsappLink || 'https://chat.whatsapp.com/Bi8vjKHDEXwGzyui1YYQdx';
+                if (waLinkBtn) {
+                  waLinkBtn.href = waLink;
                 }
-                
+
                 if (regForm) regForm.classList.add('hidden');
                 if (regSuccessState) regSuccessState.classList.remove('hidden');
-                
+
                 if (window.lucide) {
                   window.lucide.createIcons();
                 }
+
+                // Automatic WhatsApp redirect
+                setTimeout(() => {
+                  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+                  if (isMobile) {
+                    window.location.href = waLink;
+                  } else {
+                    window.open(waLink, '_blank');
+                  }
+                  
+                  const redirectState = document.getElementById('wa-redirecting-state');
+                  if (redirectState) {
+                    redirectState.innerHTML = '<p class="text-emerald-400 font-semibold text-sm">If not redirected automatically, please click below:</p>';
+                  }
+                }, 2500);
               } else {
                 if (regErrorEl) {
                   regErrorEl.innerText = verifyData.message || 'Payment verification failed.';
