@@ -25,14 +25,14 @@ export function WebinarLanding() {
 
   return `
     <!-- Scrollable Webinar Container -->
-    <div id="webinar-landing" class="fixed inset-0 z-[80] w-full h-[100dvh] font-sans bg-[#030014] overflow-y-auto overflow-x-hidden opacity-0 pointer-events-none transition-all duration-500 ease-out translate-y-4 block">
+    <div id="webinar-landing" class="fixed inset-0 z-[80] w-full h-[100dvh] font-sans bg-[#030014] overflow-y-auto overflow-x-hidden opacity-0 pointer-events-none transition-all duration-500 ease-out translate-y-4 block scroll-smooth [-webkit-overflow-scrolling:touch]">
 
       <!-- Premium Background -->
       <div class="absolute inset-0 pointer-events-none overflow-hidden bg-[#030014]">
         <div class="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f1a_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f1a_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-60"></div>
-        <div class="absolute top-[-10%] left-[-10%] w-[40vw] h-[40vw] bg-purple-600/20 blur-[120px] rounded-full mix-blend-screen animate-pulse" style="animation-duration: 10s;"></div>
-        <div class="absolute top-[20%] right-[-10%] w-[35vw] h-[35vw] bg-blue-600/20 blur-[120px] rounded-full mix-blend-screen animate-pulse" style="animation-duration: 10s; animation-delay: 1s;"></div>
-        <div class="absolute bottom-[-10%] left-[20%] w-[40vw] h-[40vw] bg-fuchsia-600/10 blur-[120px] rounded-full mix-blend-screen"></div>
+        <div class="absolute top-[-10%] left-[-10%] w-[40vw] h-[40vw] bg-purple-600/20 blur-2xl md:blur-[120px] rounded-full mix-blend-screen md:animate-pulse" style="animation-duration: 10s; transform: translateZ(0);"></div>
+        <div class="absolute top-[20%] right-[-10%] w-[35vw] h-[35vw] bg-blue-600/20 blur-2xl md:blur-[120px] rounded-full mix-blend-screen md:animate-pulse" style="animation-duration: 10s; animation-delay: 1s; transform: translateZ(0);"></div>
+        <div class="absolute bottom-[-10%] left-[20%] w-[40vw] h-[40vw] bg-fuchsia-600/10 blur-2xl md:blur-[120px] rounded-full mix-blend-screen" style="transform: translateZ(0);"></div>
         <div id="webinar-particles" class="absolute inset-0 opacity-50 mix-blend-screen"></div>
       </div>
 
@@ -387,11 +387,12 @@ export function WebinarLanding() {
 
       <!-- Registration Modal -->
       <div id="registration-modal" class="fixed inset-0 z-[110] w-full h-[100dvh] flex items-center justify-center bg-black/85 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300 ease-out">
-        <div class="relative w-[90%] max-w-lg bg-gradient-to-br from-[#1c122c] to-[#0f081d] border border-white/10 rounded-3xl p-8 md:p-10 shadow-[0_20px_50px_rgba(109,40,217,0.3)] transform scale-95 transition-transform duration-300 overflow-y-auto max-h-[90vh]">
-          
-          <button id="close-registration-modal-btn" class="absolute top-6 right-6 text-white/50 hover:text-white transition-colors cursor-pointer bg-transparent border-none">
+        <div class="relative w-[90%] max-w-lg bg-gradient-to-br from-[#1c122c] to-[#0f081d] border border-white/10 rounded-3xl shadow-[0_20px_50px_rgba(109,40,217,0.3)] transform scale-95 transition-transform duration-300 flex flex-col max-h-[90vh]">
+          <button id="close-registration-modal-btn" class="absolute top-4 right-4 md:top-6 md:right-6 text-white/50 hover:text-white transition-colors cursor-pointer bg-[#0f081d]/80 backdrop-blur-md rounded-full p-2 border border-white/10 z-20">
             <i data-lucide="x" class="w-5 h-5"></i>
           </button>
+          
+          <div class="p-8 md:p-10 overflow-y-auto w-full h-full [-webkit-overflow-scrolling:touch] rounded-3xl relative z-10">
           
           <div class="text-center mb-8">
             <h3 class="text-2xl font-black text-white mb-2 tracking-tight">Webinar Registration</h3>
@@ -463,10 +464,11 @@ export function WebinarLanding() {
             <p class="text-white/70 text-sm leading-relaxed max-w-xs mb-8">
               Awesome! You have successfully registered for the masterclass. We have sent the confirmation to your email.
             </p>
-            <a href="https://chat.whatsapp.com/mock-link" target="_blank" rel="noopener noreferrer" class="w-full flex items-center justify-center gap-2.5 bg-[#25D366] hover:bg-[#20ba56] text-white py-4 rounded-xl font-bold text-base transition-all duration-300 hover:scale-[1.02] shadow-[0_4px_24px_rgba(37,211,102,0.3)]">
+            <a href="https://chat.whatsapp.com/Bi8vjKHDEXwGzyui1YYQdx" target="_blank" rel="noopener noreferrer" class="w-full flex items-center justify-center gap-2.5 bg-[#25D366] hover:bg-[#20ba56] text-white py-4 rounded-xl font-bold text-base transition-all duration-300 hover:scale-[1.02] shadow-[0_4px_24px_rgba(37,211,102,0.3)]">
               <i data-lucide="message-square" class="w-5 h-5"></i>
               Join WhatsApp Community
             </a>
+          </div>
           </div>
 
         </div>
@@ -980,22 +982,24 @@ export function setupWebinarLanding() {
 
   // Handle sticky register button visibility
   if (stickyBtn) {
+    let ticking = false;
     container.addEventListener('scroll', () => {
-      // Show sticky button after scrolling past hero section (approx 600px now)
-      if (container.scrollTop > 600) {
-        stickyBtn.style.opacity = '1';
-        stickyBtn.style.pointerEvents = 'auto';
-        stickyBtn.style.transform = 'translateY(0) translateX(-50%)'; // For mobile centering
-        if (window.innerWidth >= 768) {
-          stickyBtn.style.transform = 'translateY(-50%) translateX(0)'; // For desktop top-1/2 centered
-        }
-      } else {
-        stickyBtn.style.opacity = '0';
-        stickyBtn.style.pointerEvents = 'none';
-        stickyBtn.style.transform = 'translateY(6rem) translateX(-50%)';
-        if (window.innerWidth >= 768) {
-          stickyBtn.style.transform = 'translateY(calc(-50% + 8rem)) translateX(0)';
-        }
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const isDesktop = window.innerWidth >= 768;
+          // Show sticky button after scrolling past hero section (approx 600px now)
+          if (container.scrollTop > 600) {
+            stickyBtn.style.opacity = '1';
+            stickyBtn.style.pointerEvents = 'auto';
+            stickyBtn.style.transform = isDesktop ? 'translateY(-50%) translateX(0)' : 'translateY(0) translateX(-50%)';
+          } else {
+            stickyBtn.style.opacity = '0';
+            stickyBtn.style.pointerEvents = 'none';
+            stickyBtn.style.transform = isDesktop ? 'translateY(calc(-50% + 8rem)) translateX(0)' : 'translateY(6rem) translateX(-50%)';
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
     });
   }

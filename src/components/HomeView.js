@@ -134,8 +134,8 @@ export function HomeView() {
 
       <!-- 1. Hero Section -->
       <section class="relative px-6 md:px-20 max-w-7xl mx-auto w-full text-center flex flex-col items-center gap-8 mt-6 view-enter overflow-hidden">
-        <div class="absolute top-[-10%] left-[20%] w-[400px] h-[400px] bg-[#6d28d9]/10 rounded-full blur-[120px] pointer-events-none animate-pulse-slow"></div>
-        <div class="absolute bottom-[10%] right-[15%] w-[350px] h-[350px] bg-[#d3bbff]/5 rounded-full blur-[100px] pointer-events-none"></div>
+        <div class="absolute top-[-10%] left-[20%] w-[400px] h-[400px] bg-[#6d28d9]/10 rounded-full blur-2xl md:blur-[120px] pointer-events-none md:animate-pulse-slow" style="transform: translateZ(0);"></div>
+        <div class="absolute bottom-[10%] right-[15%] w-[350px] h-[350px] bg-[#d3bbff]/5 rounded-full blur-2xl md:blur-[100px] pointer-events-none" style="transform: translateZ(0);"></div>
         <!-- Animated background logo -->
         <div class="hero-bg-logo-ring"></div>
         <img src="/zy-logo.png" alt="" class="hero-bg-logo" aria-hidden="true" />
