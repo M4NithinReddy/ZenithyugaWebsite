@@ -13,7 +13,11 @@ import { AiChatBot, setupAiChatBot, ENABLE_GLOBAL_AI_CHAT } from './components/A
 import { AdminDashboard, setupAdminDashboard } from './components/AdminDashboard.js';
 
 // Make lucide globally accessible for dynamic re-renders
-window.lucide = { createIcons: () => createIcons({ icons }) };
+// Support optional rootNode to avoid scanning the full DOM on every icon refresh
+window.lucide = {
+  createIcons: (opts) => createIcons({ icons, ...(opts || {}) }),
+  _icons: icons
+};
 
 // Make setup functions globally accessible
 window.setupHomeView = setupHomeView;
