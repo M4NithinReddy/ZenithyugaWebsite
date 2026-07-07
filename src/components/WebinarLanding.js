@@ -25,7 +25,7 @@ export function WebinarLanding() {
 
   return `
     <!-- Scrollable Webinar Container -->
-    <div id="webinar-landing" class="fixed inset-0 z-[80] w-full h-[100dvh] font-sans bg-[#030014] overflow-y-auto overflow-x-hidden opacity-0 pointer-events-none transition-all duration-500 ease-out translate-y-4 block scroll-smooth [-webkit-overflow-scrolling:touch]">
+    <div id="webinar-landing" class="fixed inset-0 z-[80] w-full h-[100dvh] font-sans bg-[#030014] overflow-y-auto overflow-x-hidden opacity-0 pointer-events-none transition duration-500 ease-out translate-y-4 block scroll-smooth [-webkit-overflow-scrolling:touch]">
 
       <!-- Premium Background -->
       <div class="absolute inset-0 pointer-events-none overflow-hidden bg-[#030014]">
@@ -386,13 +386,13 @@ export function WebinarLanding() {
       </button>
 
       <!-- Registration Modal -->
-      <div id="registration-modal" class="fixed inset-0 z-[110] w-full h-[100dvh] flex items-center justify-center bg-black/85 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300 ease-out">
+      <div id="registration-modal" class="fixed inset-0 z-[110] w-full h-[100dvh] flex items-center justify-center bg-black/85 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300 ease-out">
         <div class="relative w-[90%] max-w-lg bg-gradient-to-br from-[#1c122c] to-[#0f081d] border border-white/10 rounded-3xl shadow-[0_20px_50px_rgba(109,40,217,0.3)] transform scale-95 transition-transform duration-300 flex flex-col max-h-[90vh]">
           <button id="close-registration-modal-btn" class="absolute top-4 right-4 md:top-6 md:right-6 text-white/50 hover:text-white transition-colors cursor-pointer bg-[#0f081d]/80 backdrop-blur-md rounded-full p-2 border border-white/10 z-20">
             <i data-lucide="x" class="w-5 h-5"></i>
           </button>
           
-          <div class="p-8 md:p-10 overflow-y-auto w-full h-full [-webkit-overflow-scrolling:touch] rounded-3xl relative z-10">
+          <div class="p-8 md:p-10 overflow-y-auto w-full h-full [-webkit-overflow-scrolling:touch] overscroll-contain rounded-3xl relative z-10">
           
           <div class="text-center mb-8">
             <h3 class="text-2xl font-black text-white mb-2 tracking-tight">Webinar Registration</h3>
@@ -504,9 +504,12 @@ export function setupWebinarLanding() {
   if (!container || !closeBtn) return;
 
   // Button Listeners for scrolling
-  if (viewAgendaBtn) viewAgendaBtn.addEventListener('click', () => {
-    if (agendaSection) agendaSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
+  if (viewAgendaBtn && !viewAgendaBtn.dataset.setup) {
+    viewAgendaBtn.addEventListener('click', () => {
+      if (agendaSection) agendaSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+    viewAgendaBtn.dataset.setup = 'true';
+  }
 
   // --- REGISTRATION MODAL LOGIC ---
   const regModal = document.getElementById('registration-modal');
@@ -601,7 +604,8 @@ export function setupWebinarLanding() {
   }
 
   // Handle form submit
-  if (regForm) {
+  if (regForm && !regForm.dataset.setup) {
+    regForm.dataset.setup = 'true';
     regForm.addEventListener('submit', async (e) => {
       e.preventDefault();
 
@@ -807,15 +811,18 @@ export function setupWebinarLanding() {
   }
 
   // Handle browser back/forward buttons
-  window.addEventListener('popstate', (e) => {
-    if (window.location.pathname === '/webinar') {
-      if (typeof window.openWebinarLanding === 'function') {
-        window.openWebinarLanding(true);
+  if (!window._webinarPopStateListener) {
+    window.addEventListener('popstate', (e) => {
+      if (window.location.pathname === '/webinar') {
+        if (typeof window.openWebinarLanding === 'function') {
+          window.openWebinarLanding(true);
+        }
+      } else if (container.style.display === 'block') {
+        closeWebinar(true);
       }
-    } else if (container.style.display === 'block') {
-      closeWebinar(true);
-    }
-  });
+    });
+    window._webinarPopStateListener = true;
+  }
 
   // Check initial URL on page load
   if (window.location.pathname === '/webinar') {
@@ -862,8 +869,9 @@ export function setupWebinarLanding() {
       if (el.innerText !== formatted.toString()) {
         el.innerText = formatted;
         el.classList.remove('animate-pulse');
-        void el.offsetWidth; // trigger reflow
-        el.classList.add('animate-pulse');
+        window.requestAnimationFrame(() => {
+          el.classList.add('animate-pulse');
+        });
       }
     };
 
@@ -883,6 +891,7 @@ export function setupWebinarLanding() {
 
     // Start countdown
     updateCountdown();
+    if (countdownInterval) clearInterval(countdownInterval);
     countdownInterval = setInterval(updateCountdown, 1000);
 
     // Small delay to allow display:block to apply before animating opacity
@@ -931,18 +940,26 @@ export function setupWebinarLanding() {
     }, 500);
   };
 
-  closeBtn.addEventListener('click', () => closeWebinar(false));
+  if (closeBtn && !closeBtn.dataset.setup) {
+    closeBtn.addEventListener('click', () => closeWebinar(false));
+    closeBtn.dataset.setup = 'true';
+  }
 
   // Close on Escape key
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && container.style.opacity === '1') {
-      closeWebinar(false);
-    }
-  });
+  if (!window._webinarMainEscListener) {
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && container.style.opacity === '1') {
+        closeWebinar(false);
+      }
+    });
+    window._webinarMainEscListener = true;
+  }
 
   // FAQ Interaction
   const faqBtns = container.querySelectorAll('.faq-btn');
   faqBtns.forEach(btn => {
+    if (btn.dataset.setup) return;
+    btn.dataset.setup = 'true';
     btn.addEventListener('click', () => {
       const content = btn.nextElementSibling;
       const icon = btn.querySelector('.faq-icon');
@@ -983,25 +1000,29 @@ export function setupWebinarLanding() {
   });
 
   // Intersection Observer for scroll animations
-  const observerOptions = {
-    root: container,
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  };
+  if (!container.dataset.observerSetup) {
+    const observerOptions = {
+      root: container,
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, observerOptions);
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
 
-  const sections = container.querySelectorAll('.fade-in-section');
-  sections.forEach(section => observer.observe(section));
+    const sections = container.querySelectorAll('.fade-in-section');
+    sections.forEach(section => observer.observe(section));
+    container.dataset.observerSetup = 'true';
+  }
 
   // Handle sticky register button visibility
-  if (stickyBtn) {
+  if (stickyBtn && !stickyBtn.dataset.scrollSetup) {
+    stickyBtn.dataset.scrollSetup = 'true';
     let ticking = false;
     container.addEventListener('scroll', () => {
       if (!ticking) {
@@ -1021,7 +1042,7 @@ export function setupWebinarLanding() {
         });
         ticking = true;
       }
-    });
+    }, { passive: true });
   }
 
   // Particle background effect
