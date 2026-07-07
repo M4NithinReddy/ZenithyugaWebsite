@@ -28,12 +28,12 @@ export function WebinarLanding() {
     <div id="webinar-landing" class="fixed inset-0 z-[80] w-full h-[100dvh] font-sans bg-[#030014] overflow-y-auto overflow-x-hidden opacity-0 pointer-events-none transition duration-500 ease-out translate-y-4 block scroll-smooth [-webkit-overflow-scrolling:touch]">
 
       <!-- Premium Background -->
-      <div class="absolute inset-0 pointer-events-none overflow-hidden bg-[#030014]">
+      <div id="webinar-bg-effects" class="absolute inset-0 pointer-events-none overflow-hidden bg-[#030014]" style="contain:strict;">
         <div class="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f1a_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f1a_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-60"></div>
-        <div class="absolute top-[-10%] left-[-10%] w-[40vw] h-[40vw] bg-purple-600/20 blur-2xl md:blur-[120px] rounded-full mix-blend-screen md:animate-pulse" style="animation-duration: 10s; transform: translateZ(0);"></div>
-        <div class="absolute top-[20%] right-[-10%] w-[35vw] h-[35vw] bg-blue-600/20 blur-2xl md:blur-[120px] rounded-full mix-blend-screen md:animate-pulse" style="animation-duration: 10s; animation-delay: 1s; transform: translateZ(0);"></div>
-        <div class="absolute bottom-[-10%] left-[20%] w-[40vw] h-[40vw] bg-fuchsia-600/10 blur-2xl md:blur-[120px] rounded-full mix-blend-screen" style="transform: translateZ(0);"></div>
-        <div id="webinar-particles" class="absolute inset-0 opacity-50 mix-blend-screen"></div>
+        <div class="absolute top-[-10%] left-[-10%] w-[40vw] h-[40vw] bg-purple-600/20 blur-2xl rounded-full" style="transform: translateZ(0);"></div>
+        <div class="absolute top-[20%] right-[-10%] w-[35vw] h-[35vw] bg-blue-600/20 blur-2xl rounded-full" style="transform: translateZ(0);"></div>
+        <div class="absolute bottom-[-10%] left-[20%] w-[40vw] h-[40vw] bg-fuchsia-600/10 blur-2xl rounded-full" style="transform: translateZ(0);"></div>
+        <div id="webinar-particles" class="absolute inset-0 opacity-30"></div>
       </div>
 
       <!-- Main Content Wrapper -->
@@ -45,9 +45,9 @@ export function WebinarLanding() {
           <!-- LEFT COLUMN -->
           <div class="w-full lg:w-1/2 flex flex-col items-start text-left gap-8">
             
-            <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/5 backdrop-blur-xl border border-white/10 text-xs tracking-[0.2em] uppercase font-semibold shadow-[0_4px_24px_-8px_rgba(255,255,255,0.2)] fade-in-section hover:bg-white/10 transition-all duration-300 cursor-default">
+            <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs tracking-[0.2em] uppercase font-semibold shadow-[0_4px_24px_-8px_rgba(255,255,255,0.2)] fade-in-section hover:bg-white/10 transition-colors duration-300 cursor-default">
               <span class="relative flex h-2 w-2">
-                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span>
+                <span class="hidden md:inline-flex animate-ping absolute h-full w-full rounded-full bg-red-500 opacity-75"></span>
                 <span class="relative inline-flex rounded-full h-2 w-2 bg-red-500 shadow-[0_0_8px_#ef4444]"></span>
               </span>
               <span class="bg-gradient-to-r from-red-200 to-red-100 bg-clip-text text-transparent font-bold">LIVE MASTERCLASS</span>
@@ -386,7 +386,7 @@ export function WebinarLanding() {
       </button>
 
       <!-- Registration Modal -->
-      <div id="registration-modal" class="fixed inset-0 z-[110] w-full h-[100dvh] flex items-center justify-center bg-black/85 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300 ease-out">
+      <div id="registration-modal" class="fixed inset-0 z-[110] w-full h-[100dvh] flex items-center justify-center bg-black/85 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300 ease-out transform-gpu">
         <div class="relative w-[90%] max-w-lg bg-gradient-to-br from-[#1c122c] to-[#0f081d] border border-white/10 rounded-3xl shadow-[0_20px_50px_rgba(109,40,217,0.3)] transform scale-95 transition-transform duration-300 flex flex-col max-h-[90vh]">
           <button id="close-registration-modal-btn" class="absolute top-4 right-4 md:top-6 md:right-6 text-white/50 hover:text-white transition-colors cursor-pointer bg-[#0f081d]/80 backdrop-blur-md rounded-full p-2 border border-white/10 z-20">
             <i data-lucide="x" class="w-5 h-5"></i>
@@ -403,25 +403,25 @@ export function WebinarLanding() {
             <!-- Full Name -->
             <div class="flex flex-col gap-1.5 text-left">
               <label for="reg-name" class="text-xs font-semibold text-[#d3bbff] uppercase tracking-wider pl-1 font-sans">Full Name</label>
-              <input type="text" id="reg-name" required class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-purple-500 focus:bg-white/10 transition-all font-sans text-sm" placeholder="John Doe">
+              <input type="text" id="reg-name" required class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-purple-500 focus:bg-white/10 transition-colors font-sans text-sm" placeholder="John Doe">
             </div>
             
             <!-- Email -->
             <div class="flex flex-col gap-1.5 text-left">
               <label for="reg-email" class="text-xs font-semibold text-[#d3bbff] uppercase tracking-wider pl-1 font-sans">Email Address</label>
-              <input type="email" id="reg-email" required class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-purple-500 focus:bg-white/10 transition-all font-sans text-sm" placeholder="john@example.com">
+              <input type="email" id="reg-email" required class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-purple-500 focus:bg-white/10 transition-colors font-sans text-sm" placeholder="john@example.com">
             </div>
 
             <!-- Phone (WhatsApp) -->
             <div class="flex flex-col gap-1.5 text-left">
               <label for="reg-phone" class="text-xs font-semibold text-[#d3bbff] uppercase tracking-wider pl-1 font-sans">WhatsApp Number</label>
-              <input type="tel" id="reg-phone" required class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-purple-500 focus:bg-white/10 transition-all font-sans text-sm" placeholder="+91 98765 43210">
+              <input type="tel" id="reg-phone" required class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-purple-500 focus:bg-white/10 transition-colors font-sans text-sm" placeholder="+91 98765 43210">
             </div>
 
             <!-- Institution / Organization -->
             <div class="flex flex-col gap-1.5 text-left">
               <label for="reg-institution" class="text-xs font-semibold text-[#d3bbff] uppercase tracking-wider pl-1 font-sans">College / Organization</label>
-              <input type="text" id="reg-institution" required class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-purple-500 focus:bg-white/10 transition-all font-sans text-sm" placeholder="Your College or Company Name">
+              <input type="text" id="reg-institution" required class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-purple-500 focus:bg-white/10 transition-colors font-sans text-sm" placeholder="Your College or Company Name">
             </div>
 
             <!-- Role Selection -->
@@ -442,7 +442,7 @@ export function WebinarLanding() {
             <!-- Why Attend -->
             <div class="flex flex-col gap-1.5 text-left">
               <label for="reg-why" class="text-xs font-semibold text-[#d3bbff] uppercase tracking-wider pl-1 font-sans">Why do you want to attend? (Optional)</label>
-              <textarea id="reg-why" rows="2" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-purple-500 focus:bg-white/10 transition-all font-sans text-sm resize-none" placeholder="Briefly describe what you hope to learn..."></textarea>
+              <textarea id="reg-why" rows="2" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-purple-500 focus:bg-white/10 transition-colors font-sans text-sm resize-none" placeholder="Briefly describe what you hope to learn..."></textarea>
             </div>
 
             <!-- Error message container -->
@@ -531,6 +531,10 @@ export function setupWebinarLanding() {
 
     regModal.classList.remove('opacity-0', 'pointer-events-none');
     regModal.classList.add('opacity-100');
+    
+    const bgEffects = document.getElementById('webinar-bg-effects');
+    if (bgEffects) bgEffects.style.display = 'none';
+
     const modalBox = regModal.querySelector('.relative');
     if (modalBox) {
       modalBox.classList.remove('scale-95');
@@ -553,6 +557,10 @@ export function setupWebinarLanding() {
 
   const closeRegistrationModal = () => {
     if (!regModal) return;
+
+    const bgEffects = document.getElementById('webinar-bg-effects');
+    if (bgEffects) bgEffects.style.display = 'block';
+
     regModal.classList.add('opacity-0', 'pointer-events-none');
     regModal.classList.remove('opacity-100');
     const modalBox = regModal.querySelector('.relative');
@@ -1045,22 +1053,19 @@ export function setupWebinarLanding() {
     }, { passive: true });
   }
 
-  // Particle background effect
+  // Particle background effect — static dots only, no JS animation loop
   const particlesContainer = document.getElementById('webinar-particles');
   if (particlesContainer && particlesContainer.children.length === 0) {
-    for (let i = 0; i < 40; i++) {
+    // Use DocumentFragment to batch DOM insertions
+    const frag = document.createDocumentFragment();
+    for (let i = 0; i < 12; i++) {
       const particle = document.createElement('div');
       particle.className = 'absolute rounded-full bg-white pointer-events-none';
-      const size = Math.random() * 3 + 1;
-      particle.style.width = size + 'px';
-      particle.style.height = size + 'px';
-      particle.style.left = Math.random() * 100 + '%';
-      particle.style.top = Math.random() * 100 + '%';
-      particle.style.opacity = Math.random() * 0.3 + 0.1;
-      particle.style.animation = `float ${Math.random() * 15 + 15}s linear infinite`;
-      particle.style.animationDelay = `${Math.random() * 5}s`;
-      particlesContainer.appendChild(particle);
+      const size = Math.random() * 2 + 1;
+      particle.style.cssText = `width:${size}px;height:${size}px;left:${Math.random()*100}%;top:${Math.random()*100}%;opacity:${(Math.random()*0.2+0.05).toFixed(2)};`;
+      frag.appendChild(particle);
     }
+    particlesContainer.appendChild(frag);
   }
 
   // Initial call to render icons

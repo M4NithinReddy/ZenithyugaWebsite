@@ -160,7 +160,7 @@ const renderApp = () => {
         mainEl.style.transform = 'translateY(0)';
       }
     });
-  }, 2500);
+  }, 200);
 };
 
 // Scroll listener for Go-to-top visibility
