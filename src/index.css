@@ -225,9 +225,8 @@ a:hover [data-lucide] {
   contain: layout style;
 }
 
-/* Webinar overlay — promote to its own compositing layer */
+/* Webinar overlay — own compositing layer */
 #webinar-landing {
-  will-change: opacity, transform;
   isolation: isolate;
 }
 
@@ -238,11 +237,21 @@ a:hover [data-lucide] {
   will-change: auto;
 }
 
-/* Disable heavy blur animations inside registration modal to prevent GPU thrash */
-#registration-modal .backdrop-blur-md {
-  -webkit-backdrop-filter: none;
-  backdrop-filter: none;
-  background-color: rgba(0, 0, 0, 0.5);
+/* Disable ALL backdrop-filter on mobile — the #1 GPU killer on low-end phones */
+@media (max-width: 767px) {
+  #webinar-landing [class*="backdrop-blur"],
+  #webinar-landing [class*="backdrop-filter"],
+  #registration-modal {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+  /* Compensate with solid background so elements still look good */
+  #webinar-landing .backdrop-blur-xl,
+  #webinar-landing .backdrop-blur-2xl,
+  #webinar-landing .backdrop-blur-3xl,
+  #webinar-landing .backdrop-blur-md {
+    background-color: rgba(15, 8, 29, 0.85) !important;
+  }
 }
 
 /* View enter animation */

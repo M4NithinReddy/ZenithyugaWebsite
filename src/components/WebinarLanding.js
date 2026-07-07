@@ -386,9 +386,9 @@ export function WebinarLanding() {
       </button>
 
       <!-- Registration Modal -->
-      <div id="registration-modal" class="fixed inset-0 z-[110] w-full h-[100dvh] flex items-center justify-center bg-black/85 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300 ease-out transform-gpu">
+      <div id="registration-modal" class="fixed inset-0 z-[110] w-full h-[100dvh] flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300 ease-out transform-gpu" style="background:rgba(0,0,0,0.88);">
         <div class="relative w-[90%] max-w-lg bg-gradient-to-br from-[#1c122c] to-[#0f081d] border border-white/10 rounded-3xl shadow-[0_20px_50px_rgba(109,40,217,0.3)] transform scale-95 transition-transform duration-300 flex flex-col max-h-[90vh]">
-          <button id="close-registration-modal-btn" class="absolute top-4 right-4 md:top-6 md:right-6 text-white/50 hover:text-white transition-colors cursor-pointer bg-[#0f081d]/80 backdrop-blur-md rounded-full p-2 border border-white/10 z-20">
+          <button id="close-registration-modal-btn" class="absolute top-4 right-4 md:top-6 md:right-6 text-white/50 hover:text-white transition-colors cursor-pointer bg-[#0f081d] rounded-full p-2 border border-white/10 z-20">
             <i data-lucide="x" class="w-5 h-5"></i>
           </button>
           
@@ -468,7 +468,7 @@ export function WebinarLanding() {
             <p class="text-white/70 text-sm leading-relaxed max-w-xs mb-6 mt-2">
               Awesome! We have sent the confirmation to your email.
             </p>
-            <a id="wa-join-btn" href="https://chat.whatsapp.com/Bi8vjKHDEXwGzyui1YYQdx" target="_blank" rel="noopener noreferrer" class="w-full flex items-center justify-center gap-2.5 bg-[#25D366] hover:bg-[#20ba56] text-white py-4 rounded-xl font-bold text-base transition-colors duration-200 hover:scale-[1.02] shadow-[0_4px_24px_rgba(37,211,102,0.3)]">
+            <a id="wa-join-btn" href="https://chat.whatsapp.com/Bi8vjKHDEXwGzyui1YYQdx" target="_blank" rel="noopener noreferrer" class="w-full flex items-center justify-center gap-2.5 bg-[#25D366] hover:bg-[#20ba56] text-white py-4 rounded-xl font-bold text-base transition-colors duration-200 shadow-[0_4px_24px_rgba(37,211,102,0.3)]">
               <i data-lucide="message-square" class="w-5 h-5"></i>
               Join WhatsApp Community
             </a>
@@ -854,47 +854,37 @@ export function setupWebinarLanding() {
   const targetDate = new Date('2026-07-11T17:00:00+05:30').getTime();
   let countdownInterval;
 
+  // Cache refs once — do NOT call querySelector inside the interval
+  const cdDaysEl = container.querySelector('.cd-days');
+  const cdHoursEl = container.querySelector('.cd-hours');
+  const cdMinsEl = container.querySelector('.cd-mins');
+  const cdSecsEl = container.querySelector('.cd-secs');
+
   const updateCountdown = () => {
-    const now = new Date().getTime();
-    const distance = targetDate - now;
+    if (!cdDaysEl || !cdHoursEl || !cdMinsEl || !cdSecsEl) return;
 
-    const daysEl = document.querySelector('.cd-days');
-    const hoursEl = document.querySelector('.cd-hours');
-    const minsEl = document.querySelector('.cd-mins');
-    const secsEl = document.querySelector('.cd-secs');
-
-    if (!daysEl || !hoursEl || !minsEl || !secsEl) return;
+    const distance = targetDate - Date.now();
 
     if (distance < 0) {
-      daysEl.innerText = "00";
-      hoursEl.innerText = "00";
-      minsEl.innerText = "00";
-      secsEl.innerText = "00";
+      cdDaysEl.textContent = '00';
+      cdHoursEl.textContent = '00';
+      cdMinsEl.textContent = '00';
+      cdSecsEl.textContent = '00';
       if (countdownInterval) clearInterval(countdownInterval);
       return;
     }
 
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    const days    = Math.floor(distance / 86400000);
+    const hours   = Math.floor((distance % 86400000) / 3600000);
+    const minutes = Math.floor((distance % 3600000) / 60000);
+    const seconds = Math.floor((distance % 60000) / 1000);
 
-    // Simple flip effect logic (add a quick class toggle to trigger CSS if desired)
-    const setVal = (el, val) => {
-      const formatted = val < 10 ? '0' + val : val;
-      if (el.innerText !== formatted.toString()) {
-        el.innerText = formatted;
-        el.classList.remove('animate-pulse');
-        window.requestAnimationFrame(() => {
-          el.classList.add('animate-pulse');
-        });
-      }
-    };
-
-    setVal(daysEl, days);
-    setVal(hoursEl, hours);
-    setVal(minsEl, minutes);
-    setVal(secsEl, seconds);
+    // Only update textContent when value changes — no class toggling
+    const fmt = v => v < 10 ? '0' + v : String(v);
+    if (cdDaysEl.textContent !== fmt(days))     cdDaysEl.textContent = fmt(days);
+    if (cdHoursEl.textContent !== fmt(hours))   cdHoursEl.textContent = fmt(hours);
+    if (cdMinsEl.textContent !== fmt(minutes))  cdMinsEl.textContent = fmt(minutes);
+    if (cdSecsEl.textContent !== fmt(seconds))  cdSecsEl.textContent = fmt(seconds);
   };
 
   // Global open function
@@ -917,15 +907,13 @@ export function setupWebinarLanding() {
       container.style.transform = 'translateY(0)';
       document.body.style.overflow = 'hidden';
 
-      // Trigger animations
-      const sections = container.querySelectorAll('.fade-in-section');
+      // Trigger fade-in animations via IntersectionObserver (already set up)
+      // Just reset visible state for sections not yet seen
+      const sections = container.querySelectorAll('.fade-in-section:not(.visible)');
       sections.forEach(section => {
-        section.classList.remove('visible');
-        setTimeout(() => {
-          if (isElementInViewport(section, container)) {
-            section.classList.add('visible');
-          }
-        }, 100);
+        if (isElementInViewport(section, container)) {
+          section.classList.add('visible');
+        }
       });
     }, 10);
   };
